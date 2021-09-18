@@ -45,17 +45,17 @@
         <div class="navbar-menu">
           <div class="navbar-end">
             <div class="navbar-item">
-              <a class="button is-primary" href="">
+              <a class="link-balance button is-primary" href="">
                 <i class="fas fa-chart-line" aria-hidden="true"> Balance</i>
               </a>
             </div>
             <div class="navbar-item">
-              <a class="button is-primary" href="">
+              <a class="link-categorias button is-primary" href="">
                 <i class="fas fa-tag" aria-hidden="true"> Categorías</i>
               </a>
             </div>
             <div class="navbar-item">
-              <a class="button is-primary" href="">
+              <a class="link-reportes button is-primary" href="">
                 <i class="fas fa-chart-pie" aria-hidden="true"> Reportes</i>
               </a>
             </div>
@@ -63,7 +63,59 @@
         </div>
       </nav>
     </header>
+    <main>
+      <section class="principal section">
+        <a name="principal"></a>
+        <div class="container columns">
+          <div class="balance column is-3 is-offset-1 has-background-primary">
+            <article class="box">
+              <h2 class="title is-size-4 has-text-weight-bold">Balance</h2>
+            </article>
 
-    <a name="principal"></a>
+            <article class="box">
+              <div class="columns">
+                <h2 class="title is-size-4 has-text-weight-bold column">
+                  Filtros
+                </h2>
+                <a href="" class="button is-ghost mt-2">Ocultar filtros</a>
+              </div>
+            </article>
+          </div>
+
+          <div class="operaciones column is-8 has-background-primary">
+            <article class="box">
+              <div class="columns">
+                <div class="column is-6 is-flex is-align-items-center">
+                  <h3 class="title is-size-4 has-text-weight-bold">
+                    Operaciones
+                  </h3>
+                </div>
+
+                <div class="column is-6 is-flex is-justify-content-flex-end">
+                  <button class="button is-primary">+ Nueva operación</button>
+                </div>
+              </div>
+
+              <div class="card-image is-128x128">
+                <figure class="image">
+                  <img src="/img/gastos.svg" alt="Placeholder image" />
+                </figure>
+                <h4 class="title is-3 has-text-centered mt-6">
+                  Sin resultados
+                </h4>
+                <p class="has-text-centered">
+                  Cambia los filtros o agrega operaciones
+                </p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="categorias section">
+        <div class="container is-10 is-offset-1has-background-primary"></div>
+      </section>
+    </main>
+    <script src="index.js"></script>
   </body>
 </html>
