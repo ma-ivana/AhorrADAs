@@ -31,19 +31,20 @@
               AhorrADAs
             </h1>
           </a>
-      <!--Menú mobile-->
-      
-          <a
-            role="button"
-            class="navbar-burger mt-2"
-            aria-label="menu"
-            aria-expanded="false"
-          >
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-            <span aria-hidden="true"></span>
-          </a>
-     
+        </div>
+        <!--Menú mobile-->
+
+        <a
+          role="button"
+          class="navbar-burger mt-2"
+          aria-label="menu"
+          aria-expanded="false"
+        >
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+          <span aria-hidden="true"></span>
+        </a>
+
         <!--Links de la barra de navegación-->
         <div class="navbar-menu">
           <div class="navbar-end">
@@ -84,6 +85,28 @@
                 </h2>
                 <a href="" class="button is-ghost mt-2">Ocultar filtros</a>
               </div>
+
+              <label for="select-tipo" class="label">Tipo </label>
+              <div class="select is-normal is-fullwidth">
+                <select id="select-tipo">
+                  <option value="todos">Todos</option>
+                  <option value="gasto">Gasto</option>
+                  <option value="ganancia">Ganancia</option>
+                </select>
+              </div>
+
+              <label for="select-categoría" class="label">Categoría </label>
+              <div class="select is-normal is-fullwidth">
+                <select id="select-categoría">
+                  <option value="todas">Todas</option>
+                  <option value="comida">Comida</option>
+                  <option value="servicios">Servivios</option>
+                  <option value="salidas">Salidas</option>
+                  <option value="educacion">Educación</option>
+                  <option value="transporte">Transporte</option>
+                  <option value="trabajo">Trabajo</option>
+                </select>
+              </div>
             </article>
           </div>
 
@@ -116,40 +139,49 @@
           </div>
         </div>
       </section>
-<!--Sección categorías-->
+      <!--Sección categorías-->
       <section class="categorias section">
         <div class="container">
           <div class="box column is-8 is-offset-2">
-          <h2 class="title is-2 ">Categorías</h2>
-          <label class="label mt-4">Nombre</label>
+            <h2 class="title is-2">Categorías</h2>
+            <label class="label mt-4">Nombre</label>
 
-          <div class="columns mt-4">
-            <input type="text" class="column is-9 input is-normal">
-            <button class="boton-agregar button is-success column is-2 is-offset-1 is-flex is-justify-content-center">Agregar</button>
+            <div class="columns mt-4">
+              <input type="text" class="column is-9 input is-normal" />
+              <button
+                class="
+                  boton-agregar
+                  button
+                  is-success
+                  column
+                  is-2 is-offset-1 is-flex is-justify-content-center
+                "
+              >
+                Agregar
+              </button>
+            </div>
           </div>
-
-        </div>
         </div>
       </section>
-<!--Sección reportes-->
+      <!--Sección reportes-->
       <section class="reportes section">
         <div class="container">
           <div class="box column is-8 is-offset-2">
-            <h2 class="title is-2 ">Reportes</h2>
+            <h2 class="title is-2">Reportes</h2>
 
-          <div class="mt-6">
-          <figure class="image">
-            <img src="/img/reportes.svg">
-          </figure>
-          <h4 class="title is-4 mt-6 has-text-centered">Operaciones insuficientes</h4>
-          <p class="mt-4 has-text-centered">Prueba agregando más operaciones</p>
+            <div class="mt-6">
+              <figure class="image">
+                <img src="/img/reportes.svg" />
+              </figure>
+              <h4 class="title is-4 mt-6 has-text-centered">
+                Operaciones insuficientes
+              </h4>
+              <p class="mt-4 has-text-centered">
+                Prueba agregando más operaciones
+              </p>
+            </div>
+          </div>
         </div>
-        </div>
-        </div>
-
-       
-             
-       
       </section>
     </main>
     <script src="index.js"></script>
