@@ -75,7 +75,29 @@
         <div class="section columns">
           <div class="balance column is-3 is-offset-1">
             <article class="box">
-              <h2 class="title is-size-4 has-text-weight-bold">Balance</h2>
+              <h2 class="title is-size-3 mb-6 has-text-weight-bold">Balance</h2>
+              <div class="columns">
+                <p class="column is-size-5">Ganancias</p>
+                <p
+                  id="ganancias"
+                  class="column has-text-success is-size-6 has-text-right"
+                >
+                  +$0
+                </p>
+              </div>
+              <div class="columns">
+                <p class="column is-size-5">Gastos</p>
+                <p
+                  id="gastos"
+                  class="column has-text-danger is-size-6 has-text-right"
+                >
+                  +$0
+                </p>
+              </div>
+              <div class="columns">
+                <p class="column is-size-4">Total</p>
+                <p id="total" class="column is-size-6 has-text-right">+$0</p>
+              </div>
             </article>
 
             <form class="box">
@@ -141,7 +163,7 @@
             </form>
           </div>
 
-          <div class="operaciones column is-8">
+          <div class="operaciones column is-7">
             <article class="box">
               <div class="columns">
                 <div class="column is-6 is-flex is-align-items-center">
@@ -173,18 +195,20 @@
       <!--Sección categorías-->
       <section class="categorias section is-hidden">
         <div class="container">
-          <div class="box column is-8 is-offset-2">
-            <h2 class="title is-2">Categorías</h2>
+          <form class="box column is-8 is-offset-2">
+            <h2 class="title is-2 has-text-weight-bold">Categorías</h2>
+            <div class="field">
             <label class="label mt-4">Nombre</label>
 
             <div class="columns mt-4">
-              <input type="text" class="column is-9 input is-normal" />
+              <input type="text" class="column is-10 input is-normal" />
               <button
+              div="boton-agregar"
                 class="
-                  boton-agregar
                   button
                   is-success
-                  column
+                  is-narrow 
+                  ml-2
                   is-2 is-offset-1 is-flex is-justify-content-center
                 "
               >
@@ -192,13 +216,25 @@
               </button>
             </div>
           </div>
+          
+          <div class="box mt-5" id="contenedor-categorias-agregadas">
+            <div class="columns" id = categoria-agregada>
+              <p class="column is-10">Comida</p>
+              <a href="#" class="column is-1">Editar</a>
+              <a href="#" class="column is-1">Eliminar</a>
+            </div>
+          </form>
+
+
+
+          </div>
         </div>
       </section>
       <!--Sección reportes-->
       <section class="reportes section is-hidden">
         <div class="container">
           <div class="box column is-8 is-offset-2">
-            <h2 class="title is-2">Reportes</h2>
+            <h2 class="title is-2 has-text-weight-bold">Reportes</h2>
 
             <div class="mt-6">
               <figure class="image">
