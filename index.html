@@ -70,44 +70,75 @@
     <!--Fin del Header. Comienzo del Main-->
     <main>
       <!--Sección principal. Balance-->
-      <section class="principal section">
+      <section class="principal container">
         <a name="principal"></a>
-        <div class="container columns">
+        <div class="section columns">
           <div class="balance column is-3 is-offset-1">
             <article class="box">
               <h2 class="title is-size-4 has-text-weight-bold">Balance</h2>
             </article>
 
-            <article class="box">
-              <div class="columns">
-                <h2 class="title is-size-4 has-text-weight-bold column">
+            <form class="box">
+              <div class="columns is-mobile">
+                <h3 class="title is-size-4 has-text-weight-bold column">
                   Filtros
-                </h2>
+                </h3>
                 <a href="" class="button is-ghost mt-2">Ocultar filtros</a>
               </div>
 
-              <label for="select-tipo" class="label">Tipo </label>
-              <div class="select is-normal is-fullwidth">
-                <select id="select-tipo">
-                  <option value="todos">Todos</option>
-                  <option value="gasto">Gasto</option>
-                  <option value="ganancia">Ganancia</option>
-                </select>
+              <div class="field">
+                <label for="select-tipo" class="label">Tipo </label>
+                <div class="control">
+                  <div class="select is-normal is-fullwidth">
+                    <select id="select-tipo">
+                      <option value="todos">Todos</option>
+                      <option value="gasto">Gasto</option>
+                      <option value="ganancia">Ganancia</option>
+                    </select>
+                  </div>
+                </div>
               </div>
 
-              <label for="select-categoría" class="label">Categoría </label>
-              <div class="select is-normal is-fullwidth">
-                <select id="select-categoría">
-                  <option value="todas">Todas</option>
-                  <option value="comida">Comida</option>
-                  <option value="servicios">Servivios</option>
-                  <option value="salidas">Salidas</option>
-                  <option value="educacion">Educación</option>
-                  <option value="transporte">Transporte</option>
-                  <option value="trabajo">Trabajo</option>
-                </select>
+              <div class="field">
+                <label for="select-categoría" class="label">Categoría</label>
+                <div class="control">
+                  <div class="select is-normal is-fullwidth">
+                    <select id="select-categoría">
+                      <option value="todas">Todas</option>
+                      <option value="comida">Comida</option>
+                      <option value="servicios">Servivios</option>
+                      <option value="salidas">Salidas</option>
+                      <option value="educacion">Educación</option>
+                      <option value="transporte">Transporte</option>
+                      <option value="trabajo">Trabajo</option>
+                    </select>
+                  </div>
+                </div>
               </div>
-            </article>
+              <div class="field">
+                <label for="input-fecha" class="label">Desde</label>
+                <div class="control">
+                  <div class="date is-normal is-fullwidth">
+                    <input type="date" class="input" id="input-fecha" />
+                  </div>
+                </div>
+              </div>
+              <div class="field">
+                <label for="select-orden" class="label">Ordenar por</label>
+                <div class="control">
+                  <div class="select is-normal is-fullwidth">
+                    <select id="select-orden">
+                      <option value="Mas reciente">Más reciente</option>
+                      <option value="Menos reciente">Menos reciente</option>
+                      <option value="Mayor monto">Mayor monto</option>
+                      <option value="Menor monto">Menor monto</option>
+                      <option class="a/z">A/Z</option>
+                      <option class="z/a">Z/A</option>
+                    </select>
+                  </div>
+                </div>
+              </div>
+            </form>
           </div>
 
           <div class="operaciones column is-8">
@@ -140,7 +171,7 @@
         </div>
       </section>
       <!--Sección categorías-->
-      <section class="categorias section">
+      <section class="categorias section is-hidden">
         <div class="container">
           <div class="box column is-8 is-offset-2">
             <h2 class="title is-2">Categorías</h2>
@@ -164,7 +195,7 @@
         </div>
       </section>
       <!--Sección reportes-->
-      <section class="reportes section">
+      <section class="reportes section is-hidden">
         <div class="container">
           <div class="box column is-8 is-offset-2">
             <h2 class="title is-2">Reportes</h2>

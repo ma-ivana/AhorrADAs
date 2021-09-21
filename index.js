@@ -9,21 +9,23 @@ const seccionReportes = document.querySelector(".reportes");
 linkBalance.onclick = (event) => {
   event.preventDefault();
 
-  seccionPrincipal.style.display = "flex";
-  seccionReportes.style.display = "none";
-  seccionCategorias.style.display = "none";
+  seccionPrincipal.classList.remove("is-hidden");
+  seccionCategorias.classList.add("is-hidden");
+  seccionReportes.classList.add("is-hidden");
 };
 
 linkCategorias.onclick = (event) => {
   event.preventDefault();
-  seccionCategorias.style.display = "flex";
-  seccionPrincipal.style.display = "none";
-  seccionReportes.style.display = "none";
+
+  seccionPrincipal.classList.add("is-hidden");
+  seccionCategorias.classList.remove("is-hidden");
+  seccionReportes.classList.add("is-hidden");
 };
 
 linkReportes.onclick = (event) => {
   event.preventDefault();
-  seccionPrincipal.style.display = "none";
-  seccionCategorias.style.display = "none";
-  seccionReportes.style.display = "flex";
+
+  seccionPrincipal.classList.add("is-hidden");
+  seccionCategorias.classList.add("is-hidden");
+  seccionReportes.classList.remove("is-hidden");
 };
