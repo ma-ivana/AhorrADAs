@@ -48,13 +48,13 @@
         <!--Links de la barra de navegación-->
         <div class="navbar-menu">
           <div class="navbar-end">
-              <a class="link-balance navbar-item" href="">
+              <a class="link-balance navbar-item mr-2" href="">
                 <i class="fas fa-chart-line mr-2" aria-hidden="true"></i>Balance
               </a>
-              <a class="link-categorias navbar-item" href="">
+              <a class="link-categorias navbar-item mr-2" href="">
                 <i class="fas fa-tag mr-2" aria-hidden="true"></i>Categorías
               </a>
-              <a class="link-reportes navbar-item " href="">
+              <a class="link-reportes navbar-item mr-2" href="">
                 <i class="fas fa-chart-pie mr-2" aria-hidden="true"></i> Reportes
               </a>
           </div>
@@ -66,8 +66,8 @@
       <!--Sección principal. Balance-->
       <a name="principal"></a>
       <section class="principal section mt-5">
-        <div class="container columns is-justify-content-center">
-          <div id="balance" class="column is-3-widescreen is-4-desktop is-12-tablet is-offset-1-widescreen">
+        <div class="container columns is-justify-content-flex-end">
+          <div id="balance" class="column is-3">
             <article class="box">
               <h2 class="title is-size-3 mb-6 has-text-weight-bold">Balance</h2>
               <div class="columns">
@@ -90,7 +90,7 @@
               </div>
               <div class="columns">
                 <p class="column is-size-4">Total</p>
-                <p id="total" class="column is-size-6 has-text-right has-text-weight-bold ">+$0</p>
+                <p id="total" class="column is-size-6 has-text-right has-text-weight-bold">+$0</p>
               </div>
             </article>
 
@@ -99,7 +99,7 @@
                 <h3 class="title is-size-4 has-text-weight-bold column">
                   Filtros
                 </h3>
-                <a href="" class="button is-ghost mt-2">Ocultar filtros</a>
+                <button class="button is-ghost mt-2">Ocultar filtros</button>
               </div>
 
               <div class="field">
@@ -157,7 +157,7 @@
             </form>
           </div>
 
-          <div id="operaciones" class="column is-7-widescreen is-8-desktop">
+          <div id="operaciones" class="column is-7">
             <article class="box">
               <div class="columns">
                 <div class="column is-6 is-flex is-align-items-center">
@@ -171,17 +171,18 @@
                 </div>
               </div>
 
-              <div class="card-image">
-                <figure class="image">
-                  <img src="/img/gastos.svg" alt="Placeholder image" />
+              <div class="card-image columns mt-6">
+                <figure class="image column is-6 is-offset-3">
+                  <img src="/img/gastos.svg" alt="Mujer con dinero en la mano"/>
                 </figure>
+              </div>
                 <h4 class="title is-3 has-text-centered mt-6">
                   Sin resultados
                 </h4>
-                <p class="has-text-centered">
+                <p class="has-text-centered mb-6">
                   Cambia los filtros o agrega operaciones
                 </p>
-              </div>
+              
             </article>
           </div>
         </div>
@@ -189,12 +190,12 @@
       <!--Sección categorías-->
       <section class="categorias section is-hidden">
         <div class="container">
-          <form class="column is-8 is-offset-2">
+          <form class="box column is-8 is-offset-2">
             <h2 class="title is-2 has-text-weight-bold">Categorías</h2>
             <div class="field">
             <label class="label mt-4">Nombre</label>
 
-            <div class="box columns mt-4 is-justify-content-space-between">
+            <div class="columns mt-4 is-justify-content-space-around">
               <input type="text" class="column is-10 input is-normal 
               " />
               <button
@@ -213,8 +214,8 @@
               <div class="column is-10">
               <p class="tag is-primary is-light">Comida</p>
             </div>
-              <a href="#" class="column is-narrow is-size-7">Editar</a>
-              <a href="#" class="column is-narrow is-size-7">Eliminar</a>
+              <button class="button is-ghost column  is-size-7">Editar</button>
+              <button class="button is-ghost column  is-size-7">Eliminar</button>
             </div>
           </form>
 
