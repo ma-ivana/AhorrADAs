@@ -88,7 +88,7 @@
           <div id="balance" class="column is-3-widescreen is-4-desktop">
             <article class="box">
               <h2 class="title is-size-3 mb-6 has-text-weight-bold">Balance</h2>
-              <div class="columns">
+              <div class="columns is-mobile">
                 <p class="column is-size-5">Ganancias</p>
                 <p
                   id="ganancias"
@@ -97,7 +97,7 @@
                   +$0
                 </p>
               </div>
-              <div class="columns">
+              <div class="columns is-mobile">
                 <p class="column is-size-5">Gastos</p>
                 <p
                   id="gastos"
@@ -106,7 +106,7 @@
                   +$0
                 </p>
               </div>
-              <div class="columns">
+              <div class="columns is-mobile">
                 <p class="column is-size-4">Total</p>
                 <p id="total" class="column is-size-6 has-text-right has-text-weight-bold">+$0</p>
               </div>
@@ -175,7 +175,7 @@
             </form>
           </div>
 
-          <div id="operaciones" class="column is-7-widescreen is-6-desktop">
+          <div id="operaciones" class="column is-7-widescreen is-7-desktop">
             <article class="box">
               <div class="columns">
                 <div class="column is-6 is-flex is-align-items-center">
@@ -213,31 +213,30 @@
             <div class="field">
             <label class="label mt-4">Nombre</label>
 
-            <div class="columns mt-4 is-justify-content-space-around">
-              <input type="text" class="column is-10 input is-normal 
+            <div class="columns mt-4 mx-4 is-mobile">
+              <input type="text" class="column input is-normal 
               " />
               <button
               div="boton-agregar"
                 class="
                   button
                   is-success
-                  is-narrow ">
+                  is-narrow ml-3">
                 Agregar
               </button>
             </div>
           </div>
           
-          <div class="mt-5" id="contenedor-categorias-agregadas">
-            <div class="columns" id = categoria-agregada>
-              <div class="column is-10">
+          <div class="mt-5 mx-4" id="contenedor-categorias-agregadas">
+            <div class="columns is-mobile" id = categoria-agregada>
+              <div class="column">
               <p class="tag is-primary is-light">Comida</p>
             </div>
-              <button class="button is-ghost column  is-size-7">Editar</button>
-              <button class="button is-ghost column  is-size-7">Eliminar</button>
+              <button class="button is-ghost column is-1  is-size-7">Editar</button>
+              <button class="button is-ghost column  is-1  is-size-7">Eliminar</button>
+            </div>
             </div>
           </form>
-
-
 
           </div>
         </div>
@@ -247,9 +246,8 @@
         <div class="container">
           <div class="box column is-8 is-offset-2">
             <h2 class="title is-2 has-text-weight-bold">Reportes</h2>
-
             <div class="mt-6">
-              <figure class="image">
+              <figure class="image column is-6 is-offset-3 is-7-mobile is-offset-3-mobile">
                 <img src="/img/reportes.svg" />
               </figure>
               <h4 class="title is-4 mt-6 has-text-centered">
