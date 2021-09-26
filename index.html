@@ -84,10 +84,10 @@
       <!--Sección principal. Balance-->
       <a name="principal"></a>
       <section class="principal section mt-5">
-        <div class="container columns is-justify-content-flex-end">
-          <div id="balance" class="column is-3-widescreen is-4-desktop">
+        <div class="container columns is-desktop is-justify-content-flex-end">
+          <div id="balance" class="column is-3-widescreen">
             <article class="box">
-              <h2 class="title is-size-3 mb-6 has-text-weight-bold">Balance</h2>
+              <h2 class="title is-2 mb-6 has-text-weight-bold">Balance</h2>
               <div class="columns is-mobile">
                 <p class="column is-size-5">Ganancias</p>
                 <p
@@ -113,8 +113,8 @@
             </article>
 
             <form class="box">
-              <div class="columns is-mobile">
-                <h3 class="title is-size-4 has-text-weight-bold column">
+              <div class="columns is-mobile mb-0">
+                <h3 class="column title is-size-3 has-text-weight-bold">
                   Filtros
                 </h3>
                 <button class="button is-ghost mt-2">Ocultar filtros</button>
@@ -175,22 +175,22 @@
             </form>
           </div>
 
-          <div id="operaciones" class="column is-7-widescreen is-7-desktop">
+          <div id="operaciones" class="column is-7-widescreen">
             <article class="box">
-              <div class="columns">
-                <div class="column is-6 is-flex is-align-items-center">
-                  <h3 class="title is-size-4 has-text-weight-bold">
+              <div class="columns is-desktop is-tablet">
+                <div class="column">
+                  <h3 class="title is-3 has-text-weight-bold">
                     Operaciones
                   </h3>
                 </div>
 
-                <div class="column is-6 is-flex is-justify-content-flex-end">
-                  <button class="button is-primary">+ Nueva operación</button>
+                <div class="column has-text-right-widescreen">
+                  <button class="button is-primary"> + Nueva operación</button>
                 </div>
               </div>
 
               <div class="card-image columns mt-6">
-                <figure class="image column is-6 is-offset-3">
+                <figure class="image column is-6 is-offset-3 is-8-mobile is-offset-2-mobile">
                   <img src="/img/gastos.svg" alt="Mujer con dinero en la mano"/>
                 </figure>
               </div>
@@ -232,8 +232,10 @@
               <div class="column">
               <p class="tag is-primary is-light">Comida</p>
             </div>
-              <button class="button is-ghost column is-1  is-size-7">Editar</button>
-              <button class="button is-ghost column  is-1  is-size-7">Eliminar</button>
+            <div class="column is-flex is-justify-content-flex-end ">
+              <button class="button is-ghost is-size-7">Editar</button>
+              <button class="button is-ghost is-size-7">Eliminar</button>
+            </div>  
             </div>
             </div>
           </form>
@@ -244,16 +246,16 @@
       <!--Sección reportes-->
       <section class="reportes section is-hidden">
         <div class="container">
-          <div class="box column is-8 is-offset-2">
+          <div class="box column is-8 is-offset-2 my-6">
             <h2 class="title is-2 has-text-weight-bold">Reportes</h2>
-            <div class="mt-6">
+            <div class="my-6">
               <figure class="image column is-6 is-offset-3 is-7-mobile is-offset-3-mobile">
                 <img src="/img/reportes.svg" />
               </figure>
               <h4 class="title is-4 mt-6 has-text-centered">
                 Operaciones insuficientes
               </h4>
-              <p class="mt-4 has-text-centered">
+              <p class="mt-4 mb-6 has-text-centered">
                 Prueba agregando más operaciones
               </p>
             </div>
