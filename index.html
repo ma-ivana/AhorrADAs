@@ -117,9 +117,10 @@
                 <h3 class="column title is-size-3 has-text-weight-bold">
                   Filtros
                 </h3>
-                <button class="button is-ghost mt-2">Ocultar filtros</button>
+                <button class="button is-ghost mt-2 boton-filtros">Ocultar filtros</button>
               </div>
 
+              <div class="contenedor-filtros">
               <div class="field">
                 <label for="select-tipo" class="label">Tipo </label>
                 <div class="control">
@@ -172,6 +173,7 @@
                   </div>
                 </div>
               </div>
+            </div>
             </form>
           </div>
 
@@ -185,7 +187,7 @@
                 </div>
 
                 <div class="column has-text-right-widescreen">
-                  <button class="button is-primary"> + Nueva operación</button>
+                  <button id ="boton-nueva-operacion" class="button is-primary"> + Nueva operación</button>
                 </div>
               </div>
 
@@ -205,6 +207,67 @@
           </div>
         </div>
       </section>
+
+      <!--Sección Nueva Operación-->
+
+      <section id="seccion-nueva-operacion" class="section is-hidden">
+        <div class="container columns is-centered ">
+          <div class="box column is-8 is-offset-2">
+          <h2 class="title is-2 has-text-weight-bold">Nueva operación</h2>
+
+          <div class="field">
+            <label for= "descripción-nueva-operación" class="label">Descripción</label>
+            <div class="control">
+              <input type="text" id="descripción-nueva-operación" class="input">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for= "monto-nueva-operacion" class="label">Monto</label>
+            <div class="control">
+              <input type="number" id="monto-nueva-operación" class="input" value="0">
+            </div>
+          </div>
+
+          <div class="field">
+            <label for= "tipo-nueva-operacion" class="label">Tipo</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select id="tipo-nueva-operacion">
+                  <option value="gasto">Gasto</option>
+                  <option value="ganancia">Ganancia</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for= "categoria-nueva-operacion" class="label">Categoría</label>
+            <div class="control">
+              <div class="select is-fullwidth">
+                <select id="categoria-nueva-operacion">
+                  <option value=""></option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <div class="field">
+            <label for= "fecha-nueva-operacion" class="label">Fecha</label>
+            <div class="control">
+              <input type="date" id="fecha-nueva-operación" class="input">
+            </div>
+          </div>
+
+          <div class="columns m-4 mt-6">
+            <button id ="boton-cancelar-nuevas-operaciones" class="button is-light column is-offset-9 is-narrow mr-2 is-flex is-align-content-center">Cancelar</button>
+            <button class="button button is-success column is-narrow is-flex is-align-content-center">Agregar</button>
+          </div>
+
+        </div>
+        </div>
+      </section>
+
       <!--Sección categorías-->
       <section class="categorias section is-hidden">
         <div class="container">

@@ -34,16 +34,18 @@ linkReportes.onclick = (event) => {
 
 /*//////////////////// Menú desplegable mobile ////////////////////////*/
 
-const menuDesplegableMobile = document.getElementById("menu-desplegable-hamburguesa")
-const iconoHamburguesa = document.getElementById("icono-hamburguesa")
+const menuDesplegableMobile = document.getElementById(
+  "menu-desplegable-hamburguesa"
+);
+const iconoHamburguesa = document.getElementById("icono-hamburguesa");
 
 const linkBalanceMobile = document.querySelector(".link-balance-mobile");
 const linkCategoriasMobile = document.querySelector(".link-categorias-mobile");
 const linkReportesMobile = document.querySelector(".link-reportes-mobile");
 
-iconoHamburguesa.onclick = () =>{
-  menuDesplegableMobile.classList.toggle("is-hidden")
-}
+iconoHamburguesa.onclick = () => {
+  menuDesplegableMobile.classList.toggle("is-hidden");
+};
 
 linkBalanceMobile.onclick = (event) => {
   event.preventDefault();
@@ -67,4 +69,39 @@ linkReportesMobile.onclick = (event) => {
   seccionPrincipal.classList.add("is-hidden");
   seccionCategorias.classList.add("is-hidden");
   seccionReportes.classList.remove("is-hidden");
+};
+
+/*//////////////////// Ocultar filtros sección principal ////////////////////////*/
+/*falta resolver que vuelva a cambiar el texto del boton y su tamaño */
+
+const contenedorFiltros = document.querySelector(".contenedor-filtros");
+const botonFiltros = document.querySelector(".boton-filtros");
+
+botonFiltros.onclick = (event) => {
+  event.preventDefault();
+  contenedorFiltros.classList.toggle("is-hidden");
+  botonFiltros.textContent = "Mostrar filtros";
+  botonFiltros.classList.add("is-small");
+};
+
+////*Funcionalidad boton nueva operación */////
+
+const seccionNuevaOperacion = document.getElementById(
+  "seccion-nueva-operacion"
+);
+const botonNuevaOperacion = document.getElementById("boton-nueva-operacion");
+const botonCancelarNuevasOperaciones = document.getElementById(
+  "boton-cancelar-nuevas-operaciones"
+);
+
+botonNuevaOperacion.onclick = (event) => {
+  event.preventDefault();
+  seccionPrincipal.classList.add("is-hidden");
+  seccionNuevaOperacion.classList.remove("is-hidden");
+};
+
+botonCancelarNuevasOperaciones.onclick = (event) => {
+  event.preventDefault();
+  seccionNuevaOperacion.classList.add("is-hidden");
+  seccionPrincipal.classList.remove("is-hidden");
 };
