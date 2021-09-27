@@ -72,7 +72,6 @@ linkReportesMobile.onclick = (event) => {
 };
 
 /*//////////////////// Ocultar filtros sección principal ////////////////////////*/
-/*falta resolver que vuelva a cambiar el texto del boton y su tamaño */
 
 const contenedorFiltros = document.querySelector(".contenedor-filtros");
 const botonFiltros = document.querySelector(".boton-filtros");
