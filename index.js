@@ -80,8 +80,13 @@ const botonFiltros = document.querySelector(".boton-filtros");
 botonFiltros.onclick = (event) => {
   event.preventDefault();
   contenedorFiltros.classList.toggle("is-hidden");
-  botonFiltros.textContent = "Mostrar filtros";
-  botonFiltros.classList.add("is-small");
+  if (botonFiltros.textContent === "Ocultar filtros") {
+    botonFiltros.textContent = "Mostrar filtros";
+    
+  } else {
+    botonFiltros.textContent = "Ocultar filtros";
+    
+  }
 };
 
 ////*Funcionalidad boton nueva operación */////
