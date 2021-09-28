@@ -10,7 +10,6 @@ const seccionReportes = document.querySelector(".reportes");
 
 linkBalance.onclick = (event) => {
   event.preventDefault();
-
   seccionPrincipal.classList.remove("is-hidden");
   seccionCategorias.classList.add("is-hidden");
   seccionReportes.classList.add("is-hidden");
@@ -18,7 +17,6 @@ linkBalance.onclick = (event) => {
 
 linkCategorias.onclick = (event) => {
   event.preventDefault();
-
   seccionPrincipal.classList.add("is-hidden");
   seccionCategorias.classList.remove("is-hidden");
   seccionReportes.classList.add("is-hidden");
@@ -26,7 +24,6 @@ linkCategorias.onclick = (event) => {
 
 linkReportes.onclick = (event) => {
   event.preventDefault();
-
   seccionPrincipal.classList.add("is-hidden");
   seccionCategorias.classList.add("is-hidden");
   seccionReportes.classList.remove("is-hidden");
@@ -49,7 +46,6 @@ iconoHamburguesa.onclick = () => {
 
 linkBalanceMobile.onclick = (event) => {
   event.preventDefault();
-
   seccionPrincipal.classList.remove("is-hidden");
   seccionCategorias.classList.add("is-hidden");
   seccionReportes.classList.add("is-hidden");
@@ -57,7 +53,6 @@ linkBalanceMobile.onclick = (event) => {
 
 linkCategoriasMobile.onclick = (event) => {
   event.preventDefault();
-
   seccionPrincipal.classList.add("is-hidden");
   seccionCategorias.classList.remove("is-hidden");
   seccionReportes.classList.add("is-hidden");
@@ -65,7 +60,6 @@ linkCategoriasMobile.onclick = (event) => {
 
 linkReportesMobile.onclick = (event) => {
   event.preventDefault();
-
   seccionPrincipal.classList.add("is-hidden");
   seccionCategorias.classList.add("is-hidden");
   seccionReportes.classList.remove("is-hidden");
@@ -98,14 +92,27 @@ const botonCancelarNuevasOperaciones = document.getElementById(
   "boton-cancelar-nuevas-operaciones"
 );
 
-botonNuevaOperacion.onclick = (event) => {
-  event.preventDefault();
+botonNuevaOperacion.onclick = () => {
   seccionPrincipal.classList.add("is-hidden");
   seccionNuevaOperacion.classList.remove("is-hidden");
 };
 
-botonCancelarNuevasOperaciones.onclick = (event) => {
-  event.preventDefault();
+////* Boton cancelar seccion Nuevas operaciones *////
+botonCancelarNuevasOperaciones.onclick = () => {
   seccionNuevaOperacion.classList.add("is-hidden");
   seccionPrincipal.classList.remove("is-hidden");
 };
+
+////* Boton agregar seccion Nuevas operaciones *////
+
+const botonAgregarNuevaOperacion = document.getElementById("boton-agregar-nuevas-operaciones")
+const contenedorListadoNuevasOperaciones = document.getElementById("contenedor-listado-nuevas-operaciones")
+const contenedorSinOperaciones = document.getElementById("contenedor-sin-operaciones")
+
+
+botonAgregarNuevaOperacion.onclick = () => {
+  seccionNuevaOperacion.classList.add("is-hidden")
+  contenedorSinOperaciones.classList.add("is-hidden")
+  seccionPrincipal.classList.remove("is-hidden");
+  contenedorListadoNuevasOperaciones.classList.remove("is-hidden")
+}
