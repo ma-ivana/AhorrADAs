@@ -186,7 +186,7 @@
               </p>
             </div>
 
-    <!-- Contenedor listado de NUEVAS OPERACIONES-->
+            <!-- Contenedor listado de NUEVAS OPERACIONES-->
             <div id="contenedor-listado-nuevas-operaciones" class="is-hidden">
               <div class="columns is-mobile is-hidden-mobile">
                 <div class="column is-3">
@@ -303,7 +303,7 @@
               </button>
             </div>
           </div>
-      <!--Categorias agregadas-->
+          <!--Categorias agregadas-->
           <div class="mt-5 mx-4" id="contenedor-categorias-agregadas">
             <div class="columns is-mobile" id=categoria-agregada>
               <div class="column">
@@ -320,15 +320,15 @@
       </div>
     </section>
 
-     <!--Sección editar categorias-->
-    <section class="section is-hidden" id= "seccion-editar-categorias">
+    <!--Sección editar categorias-->
+    <section class="section is-hidden" id="seccion-editar-categorias">
       <div class="container">
         <form class="box column is-8 is-offset-2">
           <h2 class="title is-2 has-text-weight-bold"> Editar categoría</h2>
           <div class="field">
             <label class="label" for="input-editar-categoria">Nombre</label>
             <div class="control">
-              <input type="text" id="input-editar-categoria" class="input "/>
+              <input type="text" id="input-editar-categoria" class="input " />
             </div>
           </div>
           <div class="buttons is-right">
@@ -344,7 +344,7 @@
       <div class="container">
         <div class="box column is-8 is-offset-2 my-6">
           <h2 class="title is-2 has-text-weight-bold">Reportes</h2>
-          <div class="my-6">
+          <div id="contenedor-principal-sin-reportes" class="my-6">
             <figure class="image column is-6 is-offset-3 is-7-mobile is-offset-3-mobile">
               <img src="/img/reportes.svg" />
             </figure>
@@ -355,6 +355,56 @@
               Prueba agregando más operaciones
             </p>
           </div>
+
+          <div id="contenedor-datos-reportes" class="section my-6">
+
+            <h4 class="title is-4 m">Resumen</h4>
+        <!--Categoría mayor ganancia-->
+            <div class="columns is-mobile">
+              <p class="column is-6 has-text-weight-medium">Categoría con mayor ganancia</p>
+              <div class="column is-3 has-text-right ">
+                <p class="tag is-primary is-light">Trabajo</p>
+              </div>
+              <p class="column is-3 has-text-weight-bold  has-text-success has-text-right">+$1500</p>
+            </div>
+        <!--Categoría mayor gasto-->    
+            <div class="columns is-mobile">
+              <p class="column is-6 has-text-weight-medium">Categoría con mayor gasto</p>
+              <div class="column is-3 has-text-right ">
+                <p class="tag is-primary is-light">Comida</p>
+              </div>
+              <p class="column is-3 has-text-weight-bold has-text-danger has-text-right">-$5500</p>
+            </div>
+        <!--Categoría mayor balance-->    
+            <div class="columns is-mobile">
+              <p class="column is-6 has-text-weight-medium">Categoría con mayor balance</p>
+              <div class="column is-3 has-text-right ">
+                <p class="tag is-primary is-light">Trabajo</p>
+              </div>
+              <p class="column is-3 has-text-weight-bold has-text-right">$5500</p>
+            </div>
+        <!--Mes con mayor ganancia--> 
+            <div class="columns is-mobile">
+              <p class="column is-6 has-text-weight-medium">Mes con mayor ganancia</p>
+              <div class="column is-3 has-text-right ">
+                <p class="tag is-primary is-light">2021/09/30</p>
+              </div>
+              <p class="column is-3 has-text-weight-bold has-text-success has-text-right">$6500</p>
+            </div>
+
+        <!--Mes con mayor gasto--> 
+            <div class="columns is-mobile">
+              <p class="column is-6 has-text-weight-medium">Mes con mayor gasto</p>
+              <div class="column is-3 has-text-right ">
+                <p class="tag is-primary is-light">2021/09/30</p>
+              </div>
+              <p class="column is-3 has-text-weight-bold has-text-danger has-text-right">-$3500</p>
+            </div>
+
+          </div>
+
+
+
         </div>
       </div>
     </section>
