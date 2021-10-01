@@ -140,3 +140,7 @@ botonCancelarEditarCategoria.onclick = (event) =>{
   seccionCategorias.classList.remove("is-hidden");
   seccionEditarCategoria.classList.add("is-hidden");
 }
+
+///////////////////* Resportes *///////////////////////
+
+
