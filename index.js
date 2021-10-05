@@ -32,16 +32,16 @@ linkReportes.onclick = (event) => {
 
 /*//////////////////// Menú desplegable mobile ////////////////////////*/
 
-const menuDesplegableMobile = document.getElementById(
-  "menu-desplegable-hamburguesa"
-);
-const iconoHamburguesa = document.getElementById("icono-hamburguesa");
-
+const menuDesplegableMobile = document.querySelector(".navbar-menu");
+const botonHamburguesa = document.getElementById("boton-hamburguesa");
+const claseBotonHamburguesa = document.querySelector(".navbar-burger");
 const linkBalanceMobile = document.querySelector(".link-balance-mobile");
 const linkCategoriasMobile = document.querySelector(".link-categorias-mobile");
 const linkReportesMobile = document.querySelector(".link-reportes-mobile");
 
-iconoHamburguesa.onclick = () => {
+botonHamburguesa.onclick = () => {
+  menuDesplegableMobile.classList.toggle("is-active");
+  claseBotonHamburguesa.classList.toggle("is-active");
   menuDesplegableMobile.classList.toggle("is-hidden");
 };
 
@@ -127,7 +127,9 @@ const botonEditarCategoria = document.querySelector("#boton-editar-categoria");
 const seccionEditarCategoria = document.querySelector(
   "#seccion-editar-categorias"
 );
-const botonCancelarEditarCategoria = document.querySelector("#boton-cancelar-editar-categoria")
+const botonCancelarEditarCategoria = document.querySelector(
+  "#boton-cancelar-editar-categoria"
+);
 
 botonEditarCategoria.onclick = (event) => {
   event.preventDefault();
@@ -135,12 +137,10 @@ botonEditarCategoria.onclick = (event) => {
   seccionEditarCategoria.classList.remove("is-hidden");
 };
 
-botonCancelarEditarCategoria.onclick = (event) =>{
- event.preventDefault();
+botonCancelarEditarCategoria.onclick = (event) => {
+  event.preventDefault();
   seccionCategorias.classList.remove("is-hidden");
   seccionEditarCategoria.classList.add("is-hidden");
-}
+};
 
 ///////////////////* Resportes *///////////////////////
-
-
