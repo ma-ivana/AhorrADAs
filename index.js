@@ -3,7 +3,6 @@
 const linkBalance = document.querySelector(".link-balance");
 const linkCategorias = document.querySelector(".link-categorias");
 const linkReportes = document.querySelector(".link-reportes");
-
 const seccionPrincipal = document.querySelector("#principal");
 const seccionCategorias = document.querySelector("#seccion-categorias");
 const seccionReportes = document.querySelector(".reportes");
@@ -13,7 +12,6 @@ const seccionNuevaOperacion = document.getElementById(
 const seccionEditarCategoria = document.querySelector(
   "#seccion-editar-categorias"
 );
-
 const botonNuevaOperacion = document.getElementById("boton-nueva-operacion");
 const botonCancelarNuevasOperaciones = document.getElementById(
   "boton-cancelar-nuevas-operaciones"
@@ -27,12 +25,12 @@ const contenedorListadoNuevasOperaciones = document.getElementById(
 const contenedorSinOperaciones = document.getElementById(
   "contenedor-sin-operaciones"
 );
-
 const botonEditarCategoria = document.querySelector("#boton-editar-categoria");
-
 const botonCancelarEditarCategoria = document.querySelector(
   "#boton-cancelar-editar-categoria"
 );
+const contenedorFiltros = document.querySelector("#contenedor-filtros");
+const botonFiltros = document.querySelector("#boton-filtros");
 
 /////////////////////////////////// Función auxiliar ////////////////////////////////////////
 const arraySecciones = [
@@ -53,6 +51,8 @@ const mostrarSeccion = (array, seccion) => {
   }
 };
 
+/*//////////////////// Links botones del NAV ////////////////////////*/
+
 linkReportes.onclick = (event) => {
   event.preventDefault();
   mostrarSeccion(arraySecciones, seccionReportes);
@@ -71,20 +71,14 @@ linkBalance.onclick = (event) => {
 
 const menuDesplegableMobile = document.querySelector("#menu-desplegable-mobile");
 const botonHamburguesa = document.getElementById("boton-hamburguesa");
-const linkBalanceMobile = document.querySelector(".link-balance-mobile");
-const linkCategoriasMobile = document.querySelector(".link-categorias-mobile");
-const linkReportesMobile = document.querySelector(".link-reportes-mobile");
 
 botonHamburguesa.onclick = () => {
   botonHamburguesa.classList.toggle("is-active");
   menuDesplegableMobile.classList.toggle("is-active");
- 
+
 };
 
 /*//////////////////// Ocultar filtros sección principal ////////////////////////*/
-
-const contenedorFiltros = document.querySelector("#contenedor-filtros");
-const botonFiltros = document.querySelector("#boton-filtros");
 
 botonFiltros.onclick = (event) => {
   event.preventDefault();
@@ -126,3 +120,4 @@ botonCancelarEditarCategoria.onclick = (event) => {
 };
 
 ///////////////////* Resportes *///////////////////////
+
