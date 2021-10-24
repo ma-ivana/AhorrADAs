@@ -78,23 +78,9 @@ const linkReportesMobile = document.querySelector(".link-reportes-mobile");
 botonHamburguesa.onclick = () => {
   botonHamburguesa.classList.toggle("is-active");
   menuDesplegableMobile.classList.toggle("is-active");
-  menuDesplegableMobile.classList.toggle("is-hidden")
+ 
 };
 
-linkBalanceMobile.onclick = (event) => {
-  event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionPrincipal);
-};
-
-linkCategoriasMobile.onclick = (event) => {
-  event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionCategorias);
-};
-
-linkReportesMobile.onclick = (event) => {
-  event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionReportes);
-};
 /*//////////////////// Ocultar filtros sección principal ////////////////////////*/
 
 const contenedorFiltros = document.querySelector("#contenedor-filtros");
