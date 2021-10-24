@@ -1,75 +1,104 @@
-/*//////////////////// Links del nav a secciones ////////////////////////*/
+/*//////////////////// Elementos ////////////////////////*/
 
 const linkBalance = document.querySelector(".link-balance");
 const linkCategorias = document.querySelector(".link-categorias");
 const linkReportes = document.querySelector(".link-reportes");
 
-const seccionPrincipal = document.querySelector(".principal");
+const seccionPrincipal = document.querySelector("#principal");
 const seccionCategorias = document.querySelector("#seccion-categorias");
 const seccionReportes = document.querySelector(".reportes");
+const seccionNuevaOperacion = document.getElementById(
+  "formulario-nueva-operacion"
+);
+const seccionEditarCategoria = document.querySelector(
+  "#seccion-editar-categorias"
+);
 
-linkBalance.onclick = (event) => {
-  event.preventDefault();
-  seccionPrincipal.classList.remove("is-hidden");
-  seccionCategorias.classList.add("is-hidden");
-  seccionReportes.classList.add("is-hidden");
-};
+const botonNuevaOperacion = document.getElementById("boton-nueva-operacion");
+const botonCancelarNuevasOperaciones = document.getElementById(
+  "boton-cancelar-nuevas-operaciones"
+);
+const botonAgregarNuevaOperacion = document.getElementById(
+  "boton-agregar-nuevas-operaciones"
+);
+const contenedorListadoNuevasOperaciones = document.getElementById(
+  "contenedor-listado-nuevas-operaciones"
+);
+const contenedorSinOperaciones = document.getElementById(
+  "contenedor-sin-operaciones"
+);
 
-linkCategorias.onclick = (event) => {
-  event.preventDefault();
-  seccionPrincipal.classList.add("is-hidden");
-  seccionCategorias.classList.remove("is-hidden");
-  seccionReportes.classList.add("is-hidden");
+const botonEditarCategoria = document.querySelector("#boton-editar-categoria");
+
+const botonCancelarEditarCategoria = document.querySelector(
+  "#boton-cancelar-editar-categoria"
+);
+
+/////////////////////////////////// Función auxiliar ////////////////////////////////////////
+const arraySecciones = [
+  seccionPrincipal,
+  seccionCategorias,
+  seccionReportes,
+  seccionNuevaOperacion,
+  seccionEditarCategoria,
+];
+
+const mostrarSeccion = (array, seccion) => {
+  for (let i = 0; i < array.length; i++) {
+    if (array[i] != seccion) {
+      array[i].classList.add("is-hidden");
+    } else if (array[i] === seccion) {
+      array[i].classList.remove("is-hidden");
+    }
+  }
 };
 
 linkReportes.onclick = (event) => {
   event.preventDefault();
-  seccionPrincipal.classList.add("is-hidden");
-  seccionCategorias.classList.add("is-hidden");
-  seccionReportes.classList.remove("is-hidden");
-  seccionEditarCategoria.classList.add("is-hidden");
+  mostrarSeccion(arraySecciones, seccionReportes);
+};
+
+linkCategorias.onclick = (event) => {
+  event.preventDefault();
+  mostrarSeccion(arraySecciones, seccionCategorias);
+};
+linkBalance.onclick = (event) => {
+  event.preventDefault();
+  mostrarSeccion(arraySecciones, seccionPrincipal);
 };
 
 /*//////////////////// Menú desplegable mobile ////////////////////////*/
 
-const menuDesplegableMobile = document.querySelector(".navbar-menu");
+const menuDesplegableMobile = document.querySelector("#menu-desplegable-mobile");
 const botonHamburguesa = document.getElementById("boton-hamburguesa");
-const claseBotonHamburguesa = document.querySelector(".navbar-burger");
 const linkBalanceMobile = document.querySelector(".link-balance-mobile");
 const linkCategoriasMobile = document.querySelector(".link-categorias-mobile");
 const linkReportesMobile = document.querySelector(".link-reportes-mobile");
 
 botonHamburguesa.onclick = () => {
+  botonHamburguesa.classList.toggle("is-active");
   menuDesplegableMobile.classList.toggle("is-active");
-  claseBotonHamburguesa.classList.toggle("is-active");
-  menuDesplegableMobile.classList.toggle("is-hidden");
+  menuDesplegableMobile.classList.toggle("is-hidden")
 };
 
 linkBalanceMobile.onclick = (event) => {
   event.preventDefault();
-  seccionPrincipal.classList.remove("is-hidden");
-  seccionCategorias.classList.add("is-hidden");
-  seccionReportes.classList.add("is-hidden");
+  mostrarSeccion(arraySecciones, seccionPrincipal);
 };
 
 linkCategoriasMobile.onclick = (event) => {
   event.preventDefault();
-  seccionPrincipal.classList.add("is-hidden");
-  seccionCategorias.classList.remove("is-hidden");
-  seccionReportes.classList.add("is-hidden");
+  mostrarSeccion(arraySecciones, seccionCategorias);
 };
 
 linkReportesMobile.onclick = (event) => {
   event.preventDefault();
-  seccionPrincipal.classList.add("is-hidden");
-  seccionCategorias.classList.add("is-hidden");
-  seccionReportes.classList.remove("is-hidden");
+  mostrarSeccion(arraySecciones, seccionReportes);
 };
-
 /*//////////////////// Ocultar filtros sección principal ////////////////////////*/
 
-const contenedorFiltros = document.querySelector(".contenedor-filtros");
-const botonFiltros = document.querySelector(".boton-filtros");
+const contenedorFiltros = document.querySelector("#contenedor-filtros");
+const botonFiltros = document.querySelector("#boton-filtros");
 
 botonFiltros.onclick = (event) => {
   event.preventDefault();
@@ -83,64 +112,31 @@ botonFiltros.onclick = (event) => {
 
 /////////////////////*Funcionalidad boton nueva operación *//////////////////////////
 
-const seccionNuevaOperacion = document.getElementById(
-  "seccion-nueva-operacion"
-);
-const botonNuevaOperacion = document.getElementById("boton-nueva-operacion");
-const botonCancelarNuevasOperaciones = document.getElementById(
-  "boton-cancelar-nuevas-operaciones"
-);
-
 botonNuevaOperacion.onclick = () => {
-  seccionPrincipal.classList.add("is-hidden");
-  seccionNuevaOperacion.classList.remove("is-hidden");
+  mostrarSeccion(arraySecciones, seccionNuevaOperacion);
 };
 
 ////* Boton cancelar seccion Nuevas operaciones *////
 botonCancelarNuevasOperaciones.onclick = () => {
-  seccionNuevaOperacion.classList.add("is-hidden");
-  seccionPrincipal.classList.remove("is-hidden");
+  mostrarSeccion(arraySecciones, seccionPrincipal);
 };
 
 ////* Boton agregar seccion Nuevas operaciones *////
 
-const botonAgregarNuevaOperacion = document.getElementById(
-  "boton-agregar-nuevas-operaciones"
-);
-const contenedorListadoNuevasOperaciones = document.getElementById(
-  "contenedor-listado-nuevas-operaciones"
-);
-const contenedorSinOperaciones = document.getElementById(
-  "contenedor-sin-operaciones"
-);
-
 botonAgregarNuevaOperacion.onclick = () => {
-  seccionNuevaOperacion.classList.add("is-hidden");
-  contenedorSinOperaciones.classList.add("is-hidden");
-  seccionPrincipal.classList.remove("is-hidden");
-  contenedorListadoNuevasOperaciones.classList.remove("is-hidden");
+  mostrarSeccion(arraySecciones, seccionPrincipal);
 };
 
 ////* Boton editar categorias *////
 
-const botonEditarCategoria = document.querySelector("#boton-editar-categoria");
-const seccionEditarCategoria = document.querySelector(
-  "#seccion-editar-categorias"
-);
-const botonCancelarEditarCategoria = document.querySelector(
-  "#boton-cancelar-editar-categoria"
-);
-
 botonEditarCategoria.onclick = (event) => {
   event.preventDefault();
-  seccionCategorias.classList.add("is-hidden");
-  seccionEditarCategoria.classList.remove("is-hidden");
+  mostrarSeccion(arraySecciones, seccionEditarCategoria);
 };
 
 botonCancelarEditarCategoria.onclick = (event) => {
   event.preventDefault();
-  seccionCategorias.classList.remove("is-hidden");
-  seccionEditarCategoria.classList.add("is-hidden");
+  mostrarSeccion(arraySecciones, seccionCategorias);
 };
 
 ///////////////////* Resportes *///////////////////////

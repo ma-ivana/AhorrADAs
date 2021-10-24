@@ -26,7 +26,8 @@
             AhorrADAs
           </h1>
         </a>
-        <button id="boton-hamburguesa" role="button" class="navbar-burger mt-2" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
+        <button id="boton-hamburguesa" role="button" class="navbar-burger mt-2" aria-label="menu" aria-expanded="false"
+          data-target="navbarBasicExample">
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
           <span aria-hidden="true"></span>
@@ -34,7 +35,7 @@
       </div>
       <!--Menú desplegable mobile-->
 
-      <div class="navbar-menu is-hidden">
+      <div id="menu-desplegable-mobile" class="navbar-menu is-hidden">
         <!-- Se muestra en mobile -->
         <div class="navbar-item">
           <a class="link-balance-mobile navbar-item mr-2" href="">
@@ -68,27 +69,29 @@
   <!--Fin del Header. Comienzo del Main-->
   <main>
     <!--Sección principal. Balance-->
-    <a name="principal"></a>
-    <section class="principal section mt-5">
+    <section id="principal" class="section mt-5">
       <div class="container columns is-desktop is-justify-content-flex-end">
         <div id="balance" class="column is-3-widescreen">
           <article class="box">
             <h2 class="title is-2 mb-6 has-text-weight-bold">Balance</h2>
+            <!--Numero Ganancias-->
             <div class="columns is-mobile">
               <p class="column is-size-5">Ganancias</p>
-              <p id="ganancias" class="column has-text-success is-size-6 has-text-right">
+              <p id="numero-ganancias" class="column has-text-success is-size-6 has-text-right">
                 +$0
               </p>
             </div>
+            <!--Numero Gastos-->
             <div class="columns is-mobile">
               <p class="column is-size-5">Gastos</p>
-              <p id="gastos" class="column has-text-danger is-size-6 has-text-right">
+              <p id="numero-gastos" class="column has-text-danger is-size-6 has-text-right">
                 +$0
               </p>
             </div>
+            <!--Numero Total-->
             <div class="columns is-mobile">
               <p class="column is-size-4">Total</p>
-              <p id="total" class="column is-size-6 has-text-right has-text-weight-bold">+$0</p>
+              <p id="numero-total" class="column is-size-6 has-text-right has-text-weight-bold">+$0</p>
             </div>
           </article>
 
@@ -97,14 +100,15 @@
               <h3 class="column title is-size-3 has-text-weight-bold">
                 Filtros
               </h3>
-              <button class="column button is-ghost mt-2 boton-filtros">Ocultar filtros</button>
+              <button id="boton-filtros" class="column button is-ghost mt-2">Ocultar filtros</button>
             </div>
 
-            <div class="contenedor-filtros">
+            <div id="contenedor-filtros">
               <div class="field">
                 <label for="select-tipo" class="label">Tipo </label>
                 <div class="control">
-                  <div class="select is-normal is-fullwidth">
+                  <div class="select is-fullwidth">
+                    <!--Select de Tipo-->
                     <select id="select-tipo">
                       <option value="todos">Todos</option>
                       <option value="gasto">Gasto</option>
@@ -117,7 +121,8 @@
               <div class="field">
                 <label for="select-categoría" class="label">Categoría</label>
                 <div class="control">
-                  <div class="select is-normal is-fullwidth">
+                  <div class="select is-fullwidth">
+                    <!--Select de Categorias-->
                     <select id="select-categoría">
                       <option value="todas">Todas</option>
                       <option value="comida">Comida</option>
@@ -130,10 +135,12 @@
                   </div>
                 </div>
               </div>
+
               <div class="field">
                 <label for="input-fecha" class="label">Desde</label>
                 <div class="control">
-                  <div class="date is-normal is-fullwidth">
+                  <div class="date is-fullwidth">
+                    <!--Select de Fecha-->
                     <input type="date" class="input" id="input-fecha" />
                   </div>
                 </div>
@@ -141,7 +148,8 @@
               <div class="field">
                 <label for="select-orden" class="label">Ordenar por</label>
                 <div class="control">
-                  <div class="select is-normal is-fullwidth">
+                  <div class="select is-fullwidth">
+                    <!--Select de Orden-->
                     <select id="select-orden">
                       <option value="Mas reciente">Más reciente</option>
                       <option value="Menos reciente">Menos reciente</option>
@@ -156,7 +164,7 @@
             </div>
           </form>
         </div>
-
+        <!-- Seccion operaciones-->
         <div id="operaciones" class="column is-7-widescreen">
           <article class="box">
             <div class="columns is-desktop is-tablet">
@@ -170,8 +178,8 @@
                 <button id="boton-nueva-operacion" class="button is-primary"> + Nueva operación</button>
               </div>
             </div>
-
-            <div id="contenedor-sin-operaciones">
+            <!-- Seccion SIN operaciones-->
+            <div id="contenedor-sin-operaciones" class="is-hidden">
               <div class="card-image columns mt-6">
                 <figure id="imagen-seccion-principal"
                   class="image column is-6 is-offset-3 is-8-mobile is-offset-2-mobile">
@@ -186,8 +194,9 @@
               </p>
             </div>
 
-            <!-- Contenedor listado de NUEVAS OPERACIONES-->
-            <div id="contenedor-listado-nuevas-operaciones" class="is-hidden">
+            <!-- Seccion CON operaciones-->
+            <div id="contenedor-listado-nuevas-operaciones">
+              <!-- Titulos de las operaciones-->
               <div class="columns is-mobile is-hidden-mobile">
                 <div class="column is-3">
                   <p class="has-text-weight-semibold">Descripción</p>
@@ -205,15 +214,16 @@
                   <p class="has-text-weight-semibold">Acciones</p>
                 </div>
               </div>
-
-              <div id="item-nueva-operacion" class="columns">
+              <!-- Items nuevas operaciones-->
+              <div id="item-nueva-operacion" class="columns is-mobile">
                 <p id="descripcion-item-operacion" class="column is-3 mr-0-mobile has-text-weight-semibold">Comida</p>
                 <div class="column is-3 is-6-mobile">
-                  <p class="tag is-primary is-light">Alimentación</p>
+                  <p id="categoria-item-operacion" class="tag is-primary is-light">Alimentación</p>
                 </div>
-                <p class="column is-2 is-hidden-mobile">28/9/2021</p>
-                <p class="column is-2 is-6-mobile has-text-danger has-text-weight-bold">-$3000</p>
-                <div class="column is-2 is-6-mobile pt-0">
+                <p id="fecha-item-operacion" class="column is-2 is-hidden-mobile">28/9/2021</p>
+                <p id="monto-item-operacion" class="column is-2 is-3-mobile has-text-danger has-text-weight-bold">-$3000
+                </p>
+                <div class="column is-2 is-3-mobile pt-0">
                   <button id="boton-editar-item-operaciones" class="button is-ghost is-small pt-0 pb-0">Editar</button>
                   <button id="boton-eliminar-item-operaciones" class="button is-ghost is-small pt-0">Eliminar</button>
                 </div>
@@ -226,25 +236,25 @@
     </section>
 
     <!--Sección Nueva Operación-->
-    <section id="seccion-nueva-operacion" class="section is-hidden">
+    <form id="formulario-nueva-operacion" class="section is-hidden">
       <div class="container columns is-centered ">
         <div class="box column is-8 is-offset-2">
           <h2 class="title is-2 has-text-weight-bold">Nueva operación</h2>
-
+          <!--Input descripción-->
           <div class="field">
             <label for="descripción-nueva-operación" class="label">Descripción</label>
             <div class="control">
               <input type="text" id="descripción-nueva-operación" class="input">
             </div>
           </div>
-
+          <!--Input monto-->
           <div class="field">
             <label for="monto-nueva-operacion" class="label">Monto</label>
             <div class="control">
               <input type="number" id="monto-nueva-operación" class="input" value="0">
             </div>
           </div>
-
+          <!--Input tipo-->
           <div class="field">
             <label for="tipo-nueva-operacion" class="label">Tipo</label>
             <div class="control">
@@ -256,7 +266,7 @@
               </div>
             </div>
           </div>
-
+          <!--Input categoria-->
           <div class="field">
             <label for="categoria-nueva-operacion" class="label">Categoría</label>
             <div class="control">
@@ -267,38 +277,34 @@
               </div>
             </div>
           </div>
-
+          <!--Input fecha-->
           <div class="field">
             <label for="fecha-nueva-operacion" class="label">Fecha</label>
             <div class="control">
               <input type="date" id="fecha-nueva-operación" class="input">
             </div>
           </div>
-
+          <!--Botones agregar o cancelar nuesvas operaciones-->
           <div class="buttons is-right">
             <button id="boton-cancelar-nuevas-operaciones" class="button is-light">Cancelar</button>
             <button id="boton-agregar-nuevas-operaciones" class="button is-success">Agregar</button>
           </div>
-
         </div>
       </div>
-    </section>
+    </form>
 
     <!--Sección categorías-->
     <section id="seccion-categorias" class="section is-hidden">
       <div class="container">
         <form class="box column is-8 is-offset-2">
           <h2 class="title is-2 has-text-weight-bold">Categorías</h2>
+          <!--Input agregar categorias-->
           <div class="field">
             <label for="input-agregar-categoria" class="label mt-4">Nombre</label>
-
             <div class="control columns mt-4 mx-4 is-mobile">
-              <input id="input-agregar-categoria" type="text" class="column input is-normal 
-              " />
-              <button div="boton-agregar" class="
-                  button
-                  is-success
-                  is-narrow ml-3">
+              <input id="input-agregar-categoria" type="text" class="column input" />
+              <button div="boton-agregar" class="button is-success is-narrow ml-3">
+                <!--CHEQUEAR EL IS-NARROW-->
                 Agregar
               </button>
             </div>
@@ -311,7 +317,7 @@
               </div>
               <div class="column is-flex is-justify-content-flex-end ">
                 <button id="boton-editar-categoria" class="button is-ghost is-size-7">Editar</button>
-                <button class="button is-ghost is-size-7">Eliminar</button>
+                <button id="boton-eliminar-categoria"class="button is-ghost is-size-7">Eliminar</button>
               </div>
             </div>
           </div>
@@ -323,7 +329,7 @@
     <section class="section is-hidden" id="seccion-editar-categorias">
       <div class="container">
         <form class="box column is-8 is-offset-2">
-          <h2 class="title is-2 has-text-weight-bold"> Editar categoría</h2>
+          <h2 class="title is-2 is-size-3-mobile has-text-weight-bold"> Editar categoría</h2>
           <div class="field">
             <label class="label" for="input-editar-categoria">Nombre</label>
             <div class="control">
