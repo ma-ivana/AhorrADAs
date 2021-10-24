@@ -8,12 +8,11 @@ const seccionPrincipal = document.querySelector("#principal");
 const seccionCategorias = document.querySelector("#seccion-categorias");
 const seccionReportes = document.querySelector(".reportes");
 const seccionNuevaOperacion = document.getElementById(
-  "seccion-nueva-operacion"
+  "formulario-nueva-operacion"
 );
 const seccionEditarCategoria = document.querySelector(
   "#seccion-editar-categorias"
 );
-
 
 const botonNuevaOperacion = document.getElementById("boton-nueva-operacion");
 const botonCancelarNuevasOperaciones = document.getElementById(
@@ -35,38 +34,26 @@ const botonCancelarEditarCategoria = document.querySelector(
   "#boton-cancelar-editar-categoria"
 );
 
-
 /////////////////////////////////// Función auxiliar ////////////////////////////////////////
-const arraySecciones = [seccionPrincipal, seccionCategorias, seccionReportes, seccionNuevaOperacion, seccionEditarCategoria]
+const arraySecciones = [
+  seccionPrincipal,
+  seccionCategorias,
+  seccionReportes,
+  seccionNuevaOperacion,
+  seccionEditarCategoria,
+];
 
-const mostrarSeccion = (array, seccion) =>{
+const mostrarSeccion = (array, seccion) => {
   for (let i = 0; i < array.length; i++) {
-    if(array[i] != seccion){
-      array[i].classList.add("is-hidden")
-     
+    if (array[i] != seccion) {
+      array[i].classList.add("is-hidden");
+    } else if (array[i] === seccion) {
+      array[i].classList.remove("is-hidden");
     }
-    if(seccion === seccion){
-      seccion.classList.remove("is-hidden")
-    }
-    
   }
-}
+};
 
-linkReportes.onclick = (event) =>{
-  event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionReportes)
-}
-
-linkCategorias.onclick = (event) =>{
-  event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionCategorias)
-}
-linkBalance.onclick = (event) =>{
-  event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionPrincipal)
-}
-
-linkBalance.onclick = (event) => {
+linkReportes.onclick = (event) => {
   event.preventDefault();
   mostrarSeccion(arraySecciones, seccionReportes);
 };
@@ -77,10 +64,7 @@ linkCategorias.onclick = (event) => {
 };
 linkBalance.onclick = (event) => {
   event.preventDefault();
-  seccionPrincipal.classList.add("is-hidden");
-  seccionCategorias.classList.add("is-hidden");
-  seccionReportes.classList.remove("is-hidden");
-  seccionEditarCategoria.classList.add("is-hidden");
+  mostrarSeccion(arraySecciones, seccionPrincipal);
 };
 
 /*//////////////////// Menú desplegable mobile ////////////////////////*/
@@ -99,17 +83,17 @@ botonHamburguesa.onclick = () => {
 
 linkBalanceMobile.onclick = (event) => {
   event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionPrincipal)
+  mostrarSeccion(arraySecciones, seccionPrincipal);
 };
 
 linkCategoriasMobile.onclick = (event) => {
   event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionCategorias)
+  mostrarSeccion(arraySecciones, seccionCategorias);
 };
 
 linkReportesMobile.onclick = (event) => {
   event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionReportes)
+  mostrarSeccion(arraySecciones, seccionReportes);
 };
 /*//////////////////// Ocultar filtros sección principal ////////////////////////*/
 
@@ -128,34 +112,31 @@ botonFiltros.onclick = (event) => {
 
 /////////////////////*Funcionalidad boton nueva operación *//////////////////////////
 
-
-
 botonNuevaOperacion.onclick = () => {
-  mostrarSeccion(arraySecciones, seccionNuevaOperacion)
+  mostrarSeccion(arraySecciones, seccionNuevaOperacion);
 };
-
 
 ////* Boton cancelar seccion Nuevas operaciones *////
 botonCancelarNuevasOperaciones.onclick = () => {
-  mostrarSeccion(arraySecciones, seccionPrincipal)
+  mostrarSeccion(arraySecciones, seccionPrincipal);
 };
 
 ////* Boton agregar seccion Nuevas operaciones *////
 
 botonAgregarNuevaOperacion.onclick = () => {
-  mostrarSeccion(arraySecciones, seccionPrincipal)
+  mostrarSeccion(arraySecciones, seccionPrincipal);
 };
 
 ////* Boton editar categorias *////
 
 botonEditarCategoria.onclick = (event) => {
   event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionEditarCategoria)
+  mostrarSeccion(arraySecciones, seccionEditarCategoria);
 };
 
 botonCancelarEditarCategoria.onclick = (event) => {
   event.preventDefault();
-  mostrarSeccion(arraySecciones, seccionCategorias)
+  mostrarSeccion(arraySecciones, seccionCategorias);
 };
 
 ///////////////////* Resportes *///////////////////////
