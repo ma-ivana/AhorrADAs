@@ -128,7 +128,8 @@ const contenedorNuevasOperaciones = document.getElementById(
 const itemNuevaOperacion = document.getElementById("item-nueva-operacion");
 const selectDeTipo = document.getElementById("select-tipo");
 const selectDeCtaegoria = document.getElementById("select-categoria");
-
+console.log(selectDeCtaegoria);
+console.log(selectDeTipo);
 //// Información ////
 
 const operaciones = [
@@ -191,15 +192,17 @@ const colorDeMonto = (objeto) => {
   } else {
     return "has-text-success";
   }
-}
+};
 
 const mostrarOperacionesEnHTML = (array) => {
-  let acc = ""
+  let acc = "";
   array.map((operacion) => {
     acc =
       acc +
       `<div id="item-nueva-operacion" class="columns is-mobile">
-    <p id="descripcion-item-operacion" class="column is-3 mr-0-mobile has-text-weight-semibold">${operacion.categoria}</p>
+    <p id="descripcion-item-operacion" class="column is-3 mr-0-mobile has-text-weight-semibold">${
+      operacion.categoria
+    }</p>
     <div class="column is-3 is-6-mobile">
       <p id="categoria-item-operacion" class="tag is-primary is-light">${
         operacion.descripcion
@@ -208,7 +211,9 @@ const mostrarOperacionesEnHTML = (array) => {
     <p id="fecha-item-operacion" class="column is-2 is-hidden-mobile">${
       operacion.fecha
     }</p>
-    <p id="monto-item-operacion" class="column is-2 is-3-mobile  has-text-weight-bold ${colorDeMonto(operacion)}">$${operacion.monto}
+    <p id="monto-item-operacion" class="column is-2 is-3-mobile  has-text-weight-bold ${colorDeMonto(
+      operacion
+    )}">$${operacion.monto}
     </p>
     <div class="column is-2 is-3-mobile pt-0">
       <button id="boton-editar-item-operaciones" class="button is-ghost is-small pt-0 pb-0">Editar</button>
@@ -219,20 +224,37 @@ const mostrarOperacionesEnHTML = (array) => {
   contenedorNuevasOperaciones.innerHTML = acc;
 };
 
-mostrarOperacionesEnHTML(operaciones);
+//mostrarOperacionesEnHTML(operaciones);
 
-const aplicarFiltros = () =>{
-  const tipo = selectDeTipo.value
+// Funcion de filtrado //
 
-  const filtradoPorTipo = operaciones.filter((operacion)=>{
-    if(tipo === "todos"){
-      return operacion
+const aplicarFiltros = () => {
+  const tipo = selectDeTipo.value;
+
+  const filtradoPorTipo = operaciones.filter((operacion) => {
+    if (tipo === "todos") {
+      return operacion;
     }
-    return operacion.tipo === tipo
-  })
+    return operacion.tipo === tipo;
+  });
 
-  const categoria = selectDeCtaegoria.value
-  const filtradoFinal = filtradoPorTipo.filter((operacion)=>{
+  const categoria = selectDeCtaegoria.value;
+  const filtradoFinal = filtradoPorTipo.filter((operacion) => {
+    if (categoria === "todas") {
+      return operacion;
+    }
+    return operacion.categoria === categoria;
+  });
 
-  })
-}
+  return filtradoFinal;
+};
+
+selectDeTipo.onchange = () => {
+  const arrayFiltroTipo = aplicarFiltros();
+  mostrarOperacionesEnHTML(arrayFiltroTipo);
+};
+
+selectDeCtaegoria.onchange = () => {
+  const arrayFiltradoFinal = aplicarFiltros();
+  mostrarOperacionesEnHTML(arrayFiltradoFinal);
+};
