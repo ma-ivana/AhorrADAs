@@ -127,9 +127,8 @@ const contenedorNuevasOperaciones = document.getElementById(
 );
 const itemNuevaOperacion = document.getElementById("item-nueva-operacion");
 const selectDeTipo = document.getElementById("select-tipo");
-const selectDeCtaegoria = document.getElementById("select-categoria");
-console.log(selectDeCtaegoria);
-console.log(selectDeTipo);
+const selectDeCategoria = document.getElementById("select-categoria");
+
 //// Información ////
 
 const operaciones = [
@@ -238,7 +237,7 @@ const aplicarFiltros = () => {
     return operacion.tipo === tipo;
   });
 
-  const categoria = selectDeCtaegoria.value;
+  const categoria = selectDeCategoria.value;
   const filtradoFinal = filtradoPorTipo.filter((operacion) => {
     if (categoria === "todas") {
       return operacion;
@@ -254,7 +253,7 @@ selectDeTipo.onchange = () => {
   mostrarOperacionesEnHTML(arrayFiltroTipo);
 };
 
-selectDeCtaegoria.onchange = () => {
+selectDeCategoria.onchange = () => {
   const arrayFiltradoFinal = aplicarFiltros();
   mostrarOperacionesEnHTML(arrayFiltradoFinal);
 };
