@@ -31,6 +31,11 @@ const botonCancelarEditarCategoria = document.querySelector(
 );
 const contenedorFiltros = document.querySelector("#contenedor-filtros");
 const botonFiltros = document.querySelector("#boton-filtros");
+const inputFechaFiltro = document.getElementById("input-fecha-filtro");
+const numeroGastoSeccionBalance = document.getElementById("numero-gastos");
+const numeroGananciasSeccionBalance =
+  document.getElementById("numero-ganancias");
+const totalGananciasMenosGastos = document.getElementById("numero-total");
 
 /////////////////////////////////// Función auxiliar ////////////////////////////////////////
 const arraySecciones = [
@@ -224,8 +229,9 @@ const mostrarOperacionesEnHTML = (array) => {
 };
 
 //mostrarOperacionesEnHTML(operaciones);
+mostrarOperacionesEnHTML(operaciones);
 
-// Funcion de filtrado //
+// Funciones de filtrado //
 
 const aplicarFiltros = () => {
   const tipo = selectDeTipo.value;
@@ -248,12 +254,58 @@ const aplicarFiltros = () => {
   return filtradoFinal;
 };
 
+// Por tipo//
 selectDeTipo.onchange = () => {
   const arrayFiltroTipo = aplicarFiltros();
   mostrarOperacionesEnHTML(arrayFiltroTipo);
 };
 
+// Por categoría
+
 selectDeCategoria.onchange = () => {
   const arrayFiltradoFinal = aplicarFiltros();
   mostrarOperacionesEnHTML(arrayFiltradoFinal);
 };
+
+// Por fecha
+
+// Seccion balance //
+
+//función auxiliar, operaciones de tipo Ganancia
+
+const operacionesGanancia = (operaciones) => {
+  const operacionesTipoGanancia = operaciones.filter((operacion) => {
+    return operacion.tipo === "ganancia";
+  });
+  return operacionesTipoGanancia;
+};
+
+//función auxiliar, operaciones de tipo Gasto
+
+const operacionesGasto = (operaciones) => {
+  const operacionesTipoGasto = operaciones.filter((operacion) => {
+    return operacion.tipo === "gasto";
+  });
+  return operacionesTipoGasto;
+};
+
+// Mostrar en Balance el total de ganancias, el total de gastos y el resto entre ellos.
+
+const mostrarBalance = (gastos, ganancias) => {
+  const totalGastos = gastos.reduce((acc, operacion) => {
+    return acc + operacion.monto;
+  }, 0);
+
+  const totalGanancias = ganancias.reduce((acc, operacion) => {
+    return acc + operacion.monto;
+  }, 0);
+
+  numeroGananciasSeccionBalance.textContent = `+$${totalGanancias}`;
+  numeroGastoSeccionBalance.textContent = `-$${totalGastos}`;
+
+  const total = totalGanancias - totalGastos;
+
+  totalGananciasMenosGastos.textContent = `$${total}`;
+};
+
+mostrarBalance(operacionesGasto(operaciones), operacionesGanancia(operaciones));
