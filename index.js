@@ -37,6 +37,14 @@ const numeroGananciasSeccionBalance =
   document.getElementById("numero-ganancias");
 const totalGananciasMenosGastos = document.getElementById("numero-total");
 
+const selectCategoria = document.getElementById("select-categoria");
+const inputAgregarCategoria = document.getElementById(
+  "input-agregar-categoria"
+);
+const botonAgregarCategoria = document.getElementById(
+  "boton-agregar-categoria"
+);
+
 /////////////////////////////////// Función auxiliar ////////////////////////////////////////
 const arraySecciones = [
   seccionPrincipal,
@@ -135,53 +143,66 @@ const selectDeTipo = document.getElementById("select-tipo");
 const selectDeCategoria = document.getElementById("select-categoria");
 
 //// Información ////
-
 const operaciones = [
   {
     descripcion: "Cena con amigos",
-    categoria: "salidas",
+    categoria: "Salidas",
     fecha: "25/09/2021",
     monto: 2500,
     tipo: "gasto",
   },
   {
-    descripcion: "sueldo",
-    categoria: "sueldo",
+    descripcion: "Sueldo",
+    categoria: "Trabajo",
     fecha: "01/09/2021",
-    monto: 50000,
+    monto: 500000,
     tipo: "ganancia",
   },
   {
-    descripcion: "pagar monotributo",
-    categoria: "sueldo",
+    descripcion: "Pagar monotributo",
+    categoria: "Trabajo",
     fecha: "01/09/2021",
     monto: 40000,
     tipo: "gasto",
   },
   {
     descripcion: "Aguinaldo",
-    categoria: "sueldo",
+    categoria: "Trabajo",
     fecha: "15/09/2021",
     monto: 25000,
     tipo: "ganancia",
   },
   {
     descripcion: "Comida para gatos",
-    categoria: "mascotas",
+    categoria: "Comida",
     fecha: "25/09/2021",
     monto: 3000,
     tipo: "gasto",
   },
   {
-    descripcion: "alquiler",
-    categoria: "alquiler",
+    descripcion: "Alquiler",
+    categoria: "Alquiler",
     fecha: "25/09/2021",
     monto: 25000,
     tipo: "gasto",
   },
   {
     descripcion: "Expensas",
-    categoria: "alquiler",
+    categoria: "Servicios",
+    fecha: "01/09/2021",
+    monto: 5000,
+    tipo: "gasto",
+  },
+  {
+    descripcion: "Transporte",
+    categoria: "Transporte",
+    fecha: "01/09/2021",
+    monto: 500,
+    tipo: "gasto",
+  },
+  {
+    descripcion: "Ada",
+    categoria: "Educación",
     fecha: "01/09/2021",
     monto: 5000,
     tipo: "gasto",
@@ -309,3 +330,76 @@ const mostrarBalance = (gastos, ganancias) => {
 };
 
 mostrarBalance(operacionesGasto(operaciones), operacionesGanancia(operaciones));
+
+// AGREGAR NUEVA CATEGORIA
+
+const categorias = [
+  "Todos",
+  "Trabajo",
+  "Comida",
+  "Educación",
+  "Transporte",
+  "Servicios",
+  "Salidas",
+  "Alquiler",
+];
+
+// Funciones auxiliares
+
+const guardarEnLocalStorage = (array, clave) => {
+  const nuevoObjeto = { categorias: array };
+  const objetoJSON = JSON.stringify(nuevoObjeto);
+  localStorage.setItem(clave, objetoJSON);
+};
+
+const traerDesdeLS = (clave) => {
+  const datosLocalStorage = localStorage.getItem(clave);
+  const objetoLS = JSON.parse(datosLocalStorage);
+  if (objetoLS === null) {
+    return null;
+  } else {
+    return objetoLS.categorias;
+  }
+};
+
+const capitalizar = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
+
+//// AGREGAR CATEGORÍA EN EL SELECT
+
+const agregarCategoriaHTML = (categorias) => {
+  const categoriasEnHTML = categorias.reduce((acc, categoria, index, array) => {
+    return (
+      acc +
+      `<option value="${categoria}" id="categoria-${index}">${categoria}</option>`
+    );
+  }, "");
+
+  selectCategoria.innerHTML = categoriasEnHTML;
+
+  guardarEnLocalStorage(categorias, "categorias");
+};
+
+if (traerDesdeLS("categorias") === null) {
+  agregarCategoriaHTML(categorias);
+} else {
+  agregarCategoriaHTML(traerDesdeLS("categorias"));
+}
+
+botonAgregarCategoria.onclick = (event) => {
+  event.preventDefault();
+  const categoriaCapitalizada = capitalizar(inputAgregarCategoria.value);
+
+  const arrayDesdeLS = traerDesdeLS("categorias");
+
+  if (arrayDesdeLS.includes(categoriaCapitalizada)) {
+    alert("Categoria ya existente!");
+  } else {
+    categorias.push(categoriaCapitalizada);
+    guardarEnLocalStorage(categorias, "categorias");
+    const categoriasActualizadas = traerDesdeLS("categorias");
+    agregarCategoriaHTML(categoriasActualizadas);
+    inputAgregarCategoria.value = "";
+  }
+};
