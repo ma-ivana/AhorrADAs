@@ -326,7 +326,16 @@ const mostrarBalance = (gastos, ganancias) => {
 
   const total = totalGanancias - totalGastos;
 
-  totalGananciasMenosGastos.textContent = `$${total}`;
+  if(total > 0){
+    totalGananciasMenosGastos.classList.add("has-text-success")
+    totalGananciasMenosGastos.textContent = `$${total}`;
+  }
+  else{
+    totalGananciasMenosGastos.classList.add("has-text-danger")
+    const totalString = String(total)
+    const totalCortado = totalString.slice(1)
+    totalGananciasMenosGastos.textContent = `$${Number(totalCortado)}`
+  } 
 };
 
 mostrarBalance(operacionesGasto(operaciones), operacionesGanancia(operaciones));
