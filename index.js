@@ -45,6 +45,10 @@ const botonAgregarCategoria = document.getElementById(
   "boton-agregar-categoria"
 );
 
+const contenedorItemsCategorias = document.getElementById(
+  "contenedor-categorias-agregadas"
+);
+
 /////////////////////////////////// Función auxiliar ////////////////////////////////////////
 const arraySecciones = [
   seccionPrincipal,
@@ -209,6 +213,17 @@ const operaciones = [
   },
 ];
 
+const categorias = [
+  "Todos",
+  "Trabajo",
+  "Comida",
+  "Educación",
+  "Transporte",
+  "Servicios",
+  "Salidas",
+  "Alquiler",
+];
+
 ///Función auxiliar para mostrar elementos en HTML////
 
 const colorDeMonto = (objeto) => {
@@ -258,7 +273,7 @@ const aplicarFiltros = () => {
   const tipo = selectDeTipo.value;
 
   const filtradoPorTipo = operaciones.filter((operacion) => {
-    if (tipo === "todos") {
+    if (tipo === "Todos") {
       return operacion;
     }
     return operacion.tipo === tipo;
@@ -266,7 +281,7 @@ const aplicarFiltros = () => {
 
   const categoria = selectDeCategoria.value;
   const filtradoFinal = filtradoPorTipo.filter((operacion) => {
-    if (categoria === "todas") {
+    if (categoria === "Todos") {
       return operacion;
     }
     return operacion.categoria === categoria;
@@ -292,7 +307,7 @@ selectDeCategoria.onchange = () => {
 
 // Seccion balance //
 
-//función auxiliar, operaciones de tipo Ganancia
+//Función auxiliar, operaciones de tipo Ganancia
 
 const operacionesGanancia = (operaciones) => {
   const operacionesTipoGanancia = operaciones.filter((operacion) => {
@@ -326,32 +341,20 @@ const mostrarBalance = (gastos, ganancias) => {
 
   const total = totalGanancias - totalGastos;
 
-  if(total > 0){
-    totalGananciasMenosGastos.classList.add("has-text-success")
+  if (total > 0) {
+    totalGananciasMenosGastos.classList.add("has-text-success");
     totalGananciasMenosGastos.textContent = `$${total}`;
+  } else {
+    totalGananciasMenosGastos.classList.add("has-text-danger");
+    const totalString = String(total);
+    const totalCortado = totalString.slice(1);
+    totalGananciasMenosGastos.textContent = `$${Number(totalCortado)}`;
   }
-  else{
-    totalGananciasMenosGastos.classList.add("has-text-danger")
-    const totalString = String(total)
-    const totalCortado = totalString.slice(1)
-    totalGananciasMenosGastos.textContent = `$${Number(totalCortado)}`
-  } 
 };
 
 mostrarBalance(operacionesGasto(operaciones), operacionesGanancia(operaciones));
 
 // AGREGAR NUEVA CATEGORIA
-
-const categorias = [
-  "Todos",
-  "Trabajo",
-  "Comida",
-  "Educación",
-  "Transporte",
-  "Servicios",
-  "Salidas",
-  "Alquiler",
-];
 
 // Funciones auxiliares
 
@@ -361,7 +364,7 @@ const guardarEnLocalStorage = (array, clave) => {
   localStorage.setItem(clave, objetoJSON);
 };
 
-const traerDesdeLS = (clave) => {
+const traerCategoriasDesdeLS = (clave) => {
   const datosLocalStorage = localStorage.getItem(clave);
   const objetoLS = JSON.parse(datosLocalStorage);
   if (objetoLS === null) {
@@ -374,6 +377,24 @@ const traerDesdeLS = (clave) => {
 const capitalizar = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
+
+const agregarItemCategoria = (array) => {
+  const itemCategorias = array.reduce((acc, categoria) => {
+    return (
+      acc +
+      `<div class="columns is-mobile" id=categoria-agregada>
+<div class="column">
+<p class="tag is-primary is-light">${categoria}</p>
+</div>
+<div class="column is-flex is-justify-content-flex-end ">
+<button id="boton-editar-categoria" class="button is-ghost is-size-7">Editar</button>
+<button id="boton-eliminar-categoria"class="button is-ghost is-size-7">Eliminar</button>
+</div>
+</div>`
+    )
+  }, "")
+  contenedorItemsCategorias.innerHTML = itemCategorias;
+}
 
 //// AGREGAR CATEGORÍA EN EL SELECT
 
@@ -390,25 +411,33 @@ const agregarCategoriaHTML = (categorias) => {
   guardarEnLocalStorage(categorias, "categorias");
 };
 
-if (traerDesdeLS("categorias") === null) {
+if (traerCategoriasDesdeLS("categorias") === null) {
   agregarCategoriaHTML(categorias);
+  agregarItemCategoria(categorias);
 } else {
-  agregarCategoriaHTML(traerDesdeLS("categorias"));
+  agregarCategoriaHTML(traerCategoriasDesdeLS("categorias"))
+  agregarItemCategoria(traerCategoriasDesdeLS("categorias"));
 }
 
 botonAgregarCategoria.onclick = (event) => {
   event.preventDefault();
   const categoriaCapitalizada = capitalizar(inputAgregarCategoria.value);
-
-  const arrayDesdeLS = traerDesdeLS("categorias");
+console.log(inputAgregarCategoria.value)
+  const arrayDesdeLS = traerCategoriasDesdeLS("categorias");
 
   if (arrayDesdeLS.includes(categoriaCapitalizada)) {
-    alert("Categoria ya existente!");
-  } else {
+    alert("Categoria ya existente!")
+  }
+ else if(inputAgregarCategoria.value === " "){
+    alert("Categoria sin nombre! Asignale uno!")
+  }
+  else {
     categorias.push(categoriaCapitalizada);
     guardarEnLocalStorage(categorias, "categorias");
-    const categoriasActualizadas = traerDesdeLS("categorias");
-    agregarCategoriaHTML(categoriasActualizadas);
+    agregarCategoriaHTML(traerCategoriasDesdeLS("categorias"));
+    agregarItemCategoria(traerCategoriasDesdeLS("categorias"));
     inputAgregarCategoria.value = "";
   }
 };
+
+// Agregar item nueva categoria
