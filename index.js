@@ -378,8 +378,10 @@ const capitalizar = (str) => {
   return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
 };
 
+// Agregar item nueva categoria
+
 const agregarItemCategoria = (array) => {
-  const itemCategorias = array.reduce((acc, categoria) => {
+  const itemCategorias = array.reduce((acc, categoria,index,array) => {
     return (
       acc +
       `<div class="columns is-mobile" id=categoria-agregada>
@@ -387,8 +389,8 @@ const agregarItemCategoria = (array) => {
 <p class="tag is-primary is-light">${categoria}</p>
 </div>
 <div class="column is-flex is-justify-content-flex-end ">
-<button id="boton-editar-categoria" class="button is-ghost is-size-7">Editar</button>
-<button id="boton-eliminar-categoria"class="button is-ghost is-size-7">Eliminar</button>
+<button id="boton-editar-categoria-${index}"class="button is-ghost is-size-7">Editar</button>
+    <button id="boton-eliminar-categoria-${index}"class="button is-ghost is-size-7">Eliminar</button>
 </div>
 </div>`
     )
@@ -440,4 +442,19 @@ console.log(inputAgregarCategoria.value)
   }
 };
 
-// Agregar item nueva categoria
+
+// Agregar nueva operación
+
+//traer los elementos de HTML del formulario agregar nueva operacion.
+// crear una array vacio de "operaciones"
+// crear una funcion que:
+//1. Cree un objeto con las siguientes propiedades: id, descripcion, categoria, fecha, monto y tipo.
+//2. pushear el objeto al array "operaciones"
+//3. guarde el array operaciones en LS con la funcion: guardarEnLocalStorage
+// armar una funcion que traiga las operaciones desde ls
+// vincular lo que armamos hasta ahora trayendo el array desde ls. 
+// si no hay nada guardado en la mostrar la imagen en la pagina principal. Si hay categorias en LS que saque la imagen y muestre el listado. 
+
+
+
+
