@@ -1,5 +1,5 @@
 /*//////////////////// Elementos ////////////////////////*/
-
+// MAQUETADO
 const linkBalance = document.querySelector(".link-balance");
 const linkCategorias = document.querySelector(".link-categorias");
 const linkReportes = document.querySelector(".link-reportes");
@@ -13,12 +13,7 @@ const seccionEditarCategoria = document.querySelector(
   "#seccion-editar-categorias"
 );
 const botonNuevaOperacion = document.getElementById("boton-nueva-operacion");
-const botonCancelarNuevasOperaciones = document.getElementById(
-  "boton-cancelar-nuevas-operaciones"
-);
-const botonAgregarNuevaOperacion = document.getElementById(
-  "boton-agregar-nuevas-operaciones"
-);
+
 const contenedorListadoNuevasOperaciones = document.getElementById(
   "contenedor-listado-nuevas-operaciones"
 );
@@ -29,14 +24,24 @@ const botonEditarCategoria = document.querySelector("#boton-editar-categoria");
 const botonCancelarEditarCategoria = document.querySelector(
   "#boton-cancelar-editar-categoria"
 );
+const seccionSinOperaciones = document.getElementById(
+  "contenedor-sin-operaciones"
+);
+const seccionConOperaciones = document.getElementById(
+  "contenedor-titulos-nuevas-operaciones"
+);
+//FILTROS
 const contenedorFiltros = document.querySelector("#contenedor-filtros");
 const botonFiltros = document.querySelector("#boton-filtros");
 const inputFechaFiltro = document.getElementById("input-fecha-filtro");
+
+//BALANCE
 const numeroGastoSeccionBalance = document.getElementById("numero-gastos");
 const numeroGananciasSeccionBalance =
   document.getElementById("numero-ganancias");
 const totalGananciasMenosGastos = document.getElementById("numero-total");
 
+//CATEGORIAS
 const selectCategoria = document.getElementById("select-categoria");
 const inputAgregarCategoria = document.getElementById(
   "input-agregar-categoria"
@@ -48,8 +53,38 @@ const botonAgregarCategoria = document.getElementById(
 const contenedorItemsCategorias = document.getElementById(
   "contenedor-categorias-agregadas"
 );
+const selectDeTipo = document.getElementById("select-tipo");
+const selectDeCategoria = document.getElementById("select-categoria");
 
-/////////////////////////////////// Función auxiliar ////////////////////////////////////////
+// OPERACIONES
+const contenedorNuevasOperaciones = document.getElementById(
+  "contenedor-listado-nuevas-operaciones"
+);
+const itemNuevaOperacion = document.getElementById("item-nueva-operacion");
+
+const inputDescripcionNuevaOperacion = document.getElementById(
+  "descripción-nueva-operación"
+);
+const inputMontoNuevaOperacion = document.getElementById(
+  "monto-nueva-operación"
+);
+const selectTipoNuevaOperacion = document.getElementById(
+  "tipo-nueva-operacion"
+);
+const selectCategoriaNuevaOperacion = document.getElementById(
+  "categoria-nueva-operacion"
+);
+const inputFechaNuevaOperacion = document.getElementById(
+  "fecha-nueva-operación"
+);
+const botonCancelarNuevasOperaciones = document.getElementById(
+  "boton-cancelar-nuevas-operaciones"
+);
+const botonAgregarNuevaOperacion = document.getElementById(
+  "boton-agregar-nuevas-operaciones"
+);
+
+/////////////////////////////////// Función auxiliar maquetado ////////////////////////////////////////
 const arraySecciones = [
   seccionPrincipal,
   seccionCategorias,
@@ -137,82 +172,7 @@ botonCancelarEditarCategoria.onclick = (event) => {
   mostrarSeccion(arraySecciones, seccionCategorias);
 };
 
-///////////////////* Funcion crear item de nueva operación *///////////////////////
-
-const contenedorNuevasOperaciones = document.getElementById(
-  "contenedor-listado-nuevas-operaciones"
-);
-const itemNuevaOperacion = document.getElementById("item-nueva-operacion");
-const selectDeTipo = document.getElementById("select-tipo");
-const selectDeCategoria = document.getElementById("select-categoria");
-
-//// Información ////
-const operaciones = [
-  {
-    descripcion: "Cena con amigos",
-    categoria: "Salidas",
-    fecha: "25/09/2021",
-    monto: 2500,
-    tipo: "gasto",
-  },
-  {
-    descripcion: "Sueldo",
-    categoria: "Trabajo",
-    fecha: "01/09/2021",
-    monto: 500000,
-    tipo: "ganancia",
-  },
-  {
-    descripcion: "Pagar monotributo",
-    categoria: "Trabajo",
-    fecha: "01/09/2021",
-    monto: 40000,
-    tipo: "gasto",
-  },
-  {
-    descripcion: "Aguinaldo",
-    categoria: "Trabajo",
-    fecha: "15/09/2021",
-    monto: 25000,
-    tipo: "ganancia",
-  },
-  {
-    descripcion: "Comida para gatos",
-    categoria: "Comida",
-    fecha: "25/09/2021",
-    monto: 3000,
-    tipo: "gasto",
-  },
-  {
-    descripcion: "Alquiler",
-    categoria: "Alquiler",
-    fecha: "25/09/2021",
-    monto: 25000,
-    tipo: "gasto",
-  },
-  {
-    descripcion: "Expensas",
-    categoria: "Servicios",
-    fecha: "01/09/2021",
-    monto: 5000,
-    tipo: "gasto",
-  },
-  {
-    descripcion: "Transporte",
-    categoria: "Transporte",
-    fecha: "01/09/2021",
-    monto: 500,
-    tipo: "gasto",
-  },
-  {
-    descripcion: "Ada",
-    categoria: "Educación",
-    fecha: "01/09/2021",
-    monto: 5000,
-    tipo: "gasto",
-  },
-];
-
+//////////////////////// AGREGAR NUEVA CATEGORIA////////////////////////////
 const categorias = [
   "Todos",
   "Trabajo",
@@ -223,6 +183,136 @@ const categorias = [
   "Salidas",
   "Alquiler",
 ];
+
+// Funciones auxiliares
+const guardarCategoriasLocalStorage = (array, clave) => {
+  const nuevoObjeto = { categorias: array };
+  const objetoJSON = JSON.stringify(nuevoObjeto);
+  localStorage.setItem(clave, objetoJSON);
+};
+
+const traerCategoriasDesdeLS = (clave) => {
+  const datosLocalStorage = localStorage.getItem(clave);
+  const objetoLS = JSON.parse(datosLocalStorage);
+  if (objetoLS === null) {
+    return null;
+  } else {
+    return objetoLS.categorias;
+  }
+};
+
+const capitalizar = (str) => {
+  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+};
+
+// Agregar item nueva categoria
+
+const agregarItemCategoria = (array) => {
+  const itemCategorias = array.reduce((acc, categoria, index, array) => {
+    return (
+      acc +
+      `<div class="columns is-mobile" id=categoria-agregada>
+<div class="column">
+<p class="tag is-primary is-light">${categoria}</p>
+</div>
+<div class="column is-flex is-justify-content-flex-end ">
+<button id="boton-editar-categoria-${index}"class="button is-ghost is-size-7">Editar</button>
+    <button id="boton-eliminar-categoria-${index}"class="button is-ghost is-size-7">Eliminar</button>
+</div>
+</div>`
+    );
+  }, "");
+  contenedorItemsCategorias.innerHTML = itemCategorias;
+};
+
+//// AGREGAR CATEGORÍA EN EL SELECT
+
+const agregarCategoriaHTML = (categorias, select) => {
+  const categoriasEnHTML = categorias.reduce((acc, categoria, index, array) => {
+    return (
+      acc +
+      `<option value="${categoria}" id="categoria-${index}">${categoria}</option>`
+    );
+  }, "");
+
+  select.innerHTML = categoriasEnHTML;
+
+  guardarCategoriasLocalStorage(categorias, "categorias");
+};
+
+if (traerCategoriasDesdeLS("categorias") === null) {
+  agregarCategoriaHTML(categorias, selectCategoria);
+  agregarCategoriaHTML(categorias, selectCategoriaNuevaOperacion);
+  agregarItemCategoria(categorias);
+} else {
+  agregarCategoriaHTML(traerCategoriasDesdeLS("categorias"), selectCategoria);
+  agregarCategoriaHTML(
+    traerCategoriasDesdeLS("categorias"),
+    selectCategoriaNuevaOperacion
+  );
+  agregarItemCategoria(traerCategoriasDesdeLS("categorias"));
+}
+
+botonAgregarCategoria.onclick = (event) => {
+  event.preventDefault();
+  const categoriaCapitalizada = capitalizar(inputAgregarCategoria.value);
+  console.log(inputAgregarCategoria.value);
+  const arrayDesdeLS = traerCategoriasDesdeLS("categorias");
+
+  if (arrayDesdeLS.includes(categoriaCapitalizada)) {
+    alert("Categoria ya existente!");
+  } else if (inputAgregarCategoria.value === " ") {
+    alert("Categoria sin nombre! Asignale uno!");
+  } else {
+    categorias.push(categoriaCapitalizada);
+    guardarCategoriasLocalStorage(categorias, "categorias");
+    agregarCategoriaHTML(traerCategoriasDesdeLS("categorias"), selectCategoria);
+    agregarCategoriaHTML(
+      traerCategoriasDesdeLS("categorias"),
+      selectCategoriaNuevaOperacion
+    );
+    agregarItemCategoria(traerCategoriasDesdeLS("categorias"));
+    inputAgregarCategoria.value = "";
+  }
+};
+
+///////////////////* Funcion crear item de nueva operación *///////////////////////
+
+//// Información ////
+const operaciones = [];
+
+/////////////////////////////////////// Agregar nueva operación//////////////////////////////////
+
+//traer los elementos de HTML del formulario agregar nueva operacion.
+// crear una array vacio de "operaciones"
+// crear una funcion que:
+//1. Cree un objeto con las siguientes propiedades: id, descripcion, categoria, fecha, monto y tipo.
+// completar las propiedades con lo que recibimos del formulario. En el caso de la categoria agregarlo capitalizado. Ejecutando la funcion auxiliar.
+//2. pushear el objeto al array "operaciones"
+//3. guarde el array operaciones en LS con la funcion: guardarEnLocalStorage
+// armar una funcion que traiga las operaciones desde ls "traerOperacionesDesdeLS" resolver si ahi dentro mostramos la imagen en la seccion principal o lo hacemos fuera.
+// vincular lo que armamos hasta ahora trayendo el array desde ls.
+// si no hay nada guardado en la mostrar la imagen en la pagina principal. Si hay categorias en LS que saque la imagen y muestre el listado.
+// Cambiar la funcion: agregarCategoriaHTML(traerCategoriasDesdeLS("categorias"), selectCategoria)// para agregarle a que select lo sume!
+// cambiar la funcion que agrega objetos de categorias.
+// cambiar por un reduce en la funcion que agrega items de categorias. (tendriamos que pensar ponerle un id a ese elemento y no podria tener dos. Llamarlo por la clase?)
+//agregar if que muestre la seccion con o sin operaciones segun lo que este guardado en ls
+
+
+const guardarOperacionesLocalStorage = (array, clave) => {
+  const arrayJSON = JSON.stringify(array);
+  localStorage.setItem(clave, arrayJSON);
+};
+
+const traerOpercionesDesdeLS = (clave) => {
+  const datosLocalStorage = localStorage.getItem(clave);
+  const objetoLS = JSON.parse(datosLocalStorage);
+  if (objetoLS === null) {
+    return null;
+  } else {
+    return objetoLS;
+  }
+};
 
 ///Función auxiliar para mostrar elementos en HTML////
 
@@ -235,9 +325,8 @@ const colorDeMonto = (objeto) => {
 };
 
 const mostrarOperacionesEnHTML = (array) => {
-  let acc = "";
-  array.map((operacion) => {
-    acc =
+  const itemsOperaciones = array.reduce((acc, operacion, index, array) => {
+    return (
       acc +
       `<div id="item-nueva-operacion" class="columns is-mobile">
     <p id="descripcion-item-operacion" class="column is-3 mr-0-mobile has-text-weight-semibold">${
@@ -251,7 +340,7 @@ const mostrarOperacionesEnHTML = (array) => {
     <p id="fecha-item-operacion" class="column is-2 is-hidden-mobile">${
       operacion.fecha
     }</p>
-    <p id="monto-item-operacion" class="column is-2 is-3-mobile  has-text-weight-bold ${colorDeMonto(
+    <p id="monto-item-operacion" class="column is-2 is-3-mobile has-text-right has-text-weight-bold ${colorDeMonto(
       operacion
     )}">$${operacion.monto}
     </p>
@@ -259,13 +348,45 @@ const mostrarOperacionesEnHTML = (array) => {
       <button id="boton-editar-item-operaciones" class="button is-ghost is-small pt-0 pb-0">Editar</button>
       <button id="boton-eliminar-item-operaciones" class="button is-ghost is-small pt-0">Eliminar</button>
     </div>
-  </div>`;
-  });
-  contenedorNuevasOperaciones.innerHTML = acc;
+  </div>`
+    );
+  }, "");
+  contenedorNuevasOperaciones.innerHTML = itemsOperaciones;
+  guardarOperacionesLocalStorage(
+    traerOpercionesDesdeLS("operaciones"),
+    "operaciones"
+  );
 };
 
+// agregar operacion///
+
+botonAgregarNuevaOperacion.onclick = (event) => {
+  event.preventDefault();
+  let operacion = {
+    /*id: index,*/
+    descripcion: `${inputDescripcionNuevaOperacion.value}`,
+    categoria: `${capitalizar(selectCategoriaNuevaOperacion.value)}`,
+    fecha: inputFechaNuevaOperacion.value,
+    monto: inputMontoNuevaOperacion.value,
+    tipo: selectTipoNuevaOperacion.value,
+  };
+  operaciones.push(operacion);
+  guardarOperacionesLocalStorage(operaciones, "operaciones");
+  mostrarSeccion(arraySecciones, seccionPrincipal);
+  seccionSinOperaciones.classList.add("is-hidden");
+  seccionConOperaciones.classList.remove("is-hidden");
+  mostrarOperacionesEnHTML(traerOpercionesDesdeLS("operaciones"));
+};
 //mostrarOperacionesEnHTML(operaciones);
-mostrarOperacionesEnHTML(operaciones);
+
+if (traerOpercionesDesdeLS("operaciones") === null) {
+  seccionSinOperaciones.classList.remove("is-hidden");
+  seccionConOperaciones.classList.add("is-hidden");
+} else {
+  seccionSinOperaciones.classList.add("is-hidden");
+  seccionConOperaciones.classList.remove("is-hidden");
+  mostrarOperacionesEnHTML(traerOpercionesDesdeLS("operaciones"))
+}
 
 // Funciones de filtrado //
 
@@ -353,108 +474,3 @@ const mostrarBalance = (gastos, ganancias) => {
 };
 
 mostrarBalance(operacionesGasto(operaciones), operacionesGanancia(operaciones));
-
-// AGREGAR NUEVA CATEGORIA
-
-// Funciones auxiliares
-
-const guardarEnLocalStorage = (array, clave) => {
-  const nuevoObjeto = { categorias: array };
-  const objetoJSON = JSON.stringify(nuevoObjeto);
-  localStorage.setItem(clave, objetoJSON);
-};
-
-const traerCategoriasDesdeLS = (clave) => {
-  const datosLocalStorage = localStorage.getItem(clave);
-  const objetoLS = JSON.parse(datosLocalStorage);
-  if (objetoLS === null) {
-    return null;
-  } else {
-    return objetoLS.categorias;
-  }
-};
-
-const capitalizar = (str) => {
-  return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
-};
-
-// Agregar item nueva categoria
-
-const agregarItemCategoria = (array) => {
-  const itemCategorias = array.reduce((acc, categoria,index,array) => {
-    return (
-      acc +
-      `<div class="columns is-mobile" id=categoria-agregada>
-<div class="column">
-<p class="tag is-primary is-light">${categoria}</p>
-</div>
-<div class="column is-flex is-justify-content-flex-end ">
-<button id="boton-editar-categoria-${index}"class="button is-ghost is-size-7">Editar</button>
-    <button id="boton-eliminar-categoria-${index}"class="button is-ghost is-size-7">Eliminar</button>
-</div>
-</div>`
-    )
-  }, "")
-  contenedorItemsCategorias.innerHTML = itemCategorias;
-}
-
-//// AGREGAR CATEGORÍA EN EL SELECT
-
-const agregarCategoriaHTML = (categorias) => {
-  const categoriasEnHTML = categorias.reduce((acc, categoria, index, array) => {
-    return (
-      acc +
-      `<option value="${categoria}" id="categoria-${index}">${categoria}</option>`
-    );
-  }, "");
-
-  selectCategoria.innerHTML = categoriasEnHTML;
-
-  guardarEnLocalStorage(categorias, "categorias");
-};
-
-if (traerCategoriasDesdeLS("categorias") === null) {
-  agregarCategoriaHTML(categorias);
-  agregarItemCategoria(categorias);
-} else {
-  agregarCategoriaHTML(traerCategoriasDesdeLS("categorias"))
-  agregarItemCategoria(traerCategoriasDesdeLS("categorias"));
-}
-
-botonAgregarCategoria.onclick = (event) => {
-  event.preventDefault();
-  const categoriaCapitalizada = capitalizar(inputAgregarCategoria.value);
-console.log(inputAgregarCategoria.value)
-  const arrayDesdeLS = traerCategoriasDesdeLS("categorias");
-
-  if (arrayDesdeLS.includes(categoriaCapitalizada)) {
-    alert("Categoria ya existente!")
-  }
- else if(inputAgregarCategoria.value === " "){
-    alert("Categoria sin nombre! Asignale uno!")
-  }
-  else {
-    categorias.push(categoriaCapitalizada);
-    guardarEnLocalStorage(categorias, "categorias");
-    agregarCategoriaHTML(traerCategoriasDesdeLS("categorias"));
-    agregarItemCategoria(traerCategoriasDesdeLS("categorias"));
-    inputAgregarCategoria.value = "";
-  }
-};
-
-
-// Agregar nueva operación
-
-//traer los elementos de HTML del formulario agregar nueva operacion.
-// crear una array vacio de "operaciones"
-// crear una funcion que:
-//1. Cree un objeto con las siguientes propiedades: id, descripcion, categoria, fecha, monto y tipo.
-//2. pushear el objeto al array "operaciones"
-//3. guarde el array operaciones en LS con la funcion: guardarEnLocalStorage
-// armar una funcion que traiga las operaciones desde ls
-// vincular lo que armamos hasta ahora trayendo el array desde ls. 
-// si no hay nada guardado en la mostrar la imagen en la pagina principal. Si hay categorias en LS que saque la imagen y muestre el listado. 
-
-
-
-
