@@ -261,7 +261,7 @@ botonAgregarCategoria.onclick = (event) => {
 
   if (arrayDesdeLS.includes(categoriaCapitalizada)) {
     alert("Categoria ya existente!");
-  } else if (inputAgregarCategoria.value === " ") {
+  } else if (inputAgregarCategoria.value === "") {
     alert("Categoria sin nombre! Asignale uno!");
   } else {
     categorias.push(categoriaCapitalizada);
@@ -355,13 +355,10 @@ const mostrarOperacionesEnHTML = (array) => {
   contenedorNuevasOperaciones.innerHTML = itemsOperaciones;
 };
 
-//mostrarOperacionesEnHTML(operaciones);
-
 // agregar operacion///
 botonAgregarNuevaOperacion.onclick = (event) => {
   event.preventDefault();
   let operacion = {
-    /*id: index,*/
     descripcion: inputDescripcionNuevaOperacion.value,
     categoria: selectCategoriaNuevaOperacion.value,
     fecha: inputFechaNuevaOperacion.value,
@@ -419,8 +416,8 @@ selectDeCategoria.onchange = () => {
 
 //Función auxiliar, operaciones de tipo Ganancia
 
-const operacionesGanancia = () => {
-  const operacionesTipoGanancia = operaciones.filter((operacion) => {
+const operacionesGanancia = (ganancias) => {
+  const operacionesTipoGanancia = ganancias.filter((operacion) => {
     return operacion.tipo === "ganancia";
   });
   return operacionesTipoGanancia;
@@ -428,8 +425,8 @@ const operacionesGanancia = () => {
 
 //función auxiliar, operaciones de tipo Gasto
 
-const operacionesGasto = () => {
-  const operacionesTipoGasto = operaciones.filter((operacion) => {
+const operacionesGasto = (gastos) => {
+  const operacionesTipoGasto = gastos.filter((operacion) => {
     return operacion.tipo === "gasto";
   });
   return operacionesTipoGasto;
@@ -439,11 +436,11 @@ const operacionesGasto = () => {
 
 const mostrarBalance = (gastos, ganancias) => {
   const totalGastos = gastos.reduce((acc, operacion) => {
-    return acc + operacion.monto;
+    return acc = acc + Number(operacion.monto)
   }, 0);
 
   const totalGanancias = ganancias.reduce((acc, operacion) => {
-    return acc + operacion.monto;
+    return acc = acc + Number(operacion.monto)
   }, 0);
 
   numeroGananciasSeccionBalance.textContent = `+$${totalGanancias}`;
@@ -470,5 +467,8 @@ if (traerOperacionesDesdeLS("operaciones") === null) {
   seccionSinOperaciones.classList.add("is-hidden");
   seccionConOperaciones.classList.remove("is-hidden");
   mostrarOperacionesEnHTML(traerOperacionesDesdeLS("operaciones"));
-  mostrarBalance(operacionesGasto(), operacionesGanancia());
+  mostrarBalance(
+    operacionesGasto(traerOperacionesDesdeLS("operaciones")),
+    operacionesGanancia(traerOperacionesDesdeLS("operaciones"))
+  );
 }
