@@ -325,6 +325,15 @@ const colorDeMonto = (objeto) => {
   }
 };
 
+const signoMonto = (operacion)=>{
+  if(operacion.tipo === "gasto"){
+    return "-"
+  }
+  else if(operacion.tipo === "ganancia"){
+    return "+"
+  }
+}
+
 const mostrarOperacionesEnHTML = (array) => {
   const itemsOperaciones = array.reduce((acc, operacion, index, array) => {
     return (
@@ -343,7 +352,7 @@ const mostrarOperacionesEnHTML = (array) => {
     }</p>
     <p id="monto-item-operacion" class="column is-2 is-3-mobile has-text-right has-text-weight-bold ${colorDeMonto(
       operacion
-    )}">$${operacion.monto}
+    )}">${signoMonto(operacion)}$${operacion.monto}
     </p>
     <div class="column is-2 is-3-mobile pt-0">
       <button id="boton-editar-item-operaciones" class="button is-ghost is-small pt-0 pb-0">Editar</button>
@@ -371,7 +380,10 @@ botonAgregarNuevaOperacion.onclick = (event) => {
   mostrarSeccion(arraySecciones, seccionPrincipal);
   seccionSinOperaciones.classList.add("is-hidden");
   seccionConOperaciones.classList.remove("is-hidden");
-  mostrarBalance(operacionesGasto(), operacionesGanancia());
+  mostrarBalance(
+    operacionesPorTipo(traerOperacionesDesdeLS("operaciones"), "gasto"),
+    operacionesPorTipo(traerOperacionesDesdeLS("operaciones"), "ganancia")
+  );
 };
 
 // Funciones de filtrado //
@@ -414,33 +426,24 @@ selectDeCategoria.onchange = () => {
 
 // Seccion balance //
 
-//Función auxiliar, operaciones de tipo Ganancia
+//Función auxiliar, operaciones por tipo.
 
-const operacionesGanancia = (ganancias) => {
-  const operacionesTipoGanancia = ganancias.filter((operacion) => {
-    return operacion.tipo === "ganancia";
+const operacionesPorTipo = (operaciones, tipo) => {
+  const operacionesFiltradas = operaciones.filter((operacion) => {
+    return operacion.tipo === tipo;
   });
-  return operacionesTipoGanancia;
-};
-
-//función auxiliar, operaciones de tipo Gasto
-
-const operacionesGasto = (gastos) => {
-  const operacionesTipoGasto = gastos.filter((operacion) => {
-    return operacion.tipo === "gasto";
-  });
-  return operacionesTipoGasto;
+  return operacionesFiltradas;
 };
 
 // Mostrar en Balance el total de ganancias, el total de gastos y el resto entre ellos.
 
 const mostrarBalance = (gastos, ganancias) => {
   const totalGastos = gastos.reduce((acc, operacion) => {
-    return acc = acc + Number(operacion.monto)
+    return (acc = acc + Number(operacion.monto));
   }, 0);
 
   const totalGanancias = ganancias.reduce((acc, operacion) => {
-    return acc = acc + Number(operacion.monto)
+    return (acc = acc + Number(operacion.monto));
   }, 0);
 
   numeroGananciasSeccionBalance.textContent = `+$${totalGanancias}`;
@@ -468,7 +471,7 @@ if (traerOperacionesDesdeLS("operaciones") === null) {
   seccionConOperaciones.classList.remove("is-hidden");
   mostrarOperacionesEnHTML(traerOperacionesDesdeLS("operaciones"));
   mostrarBalance(
-    operacionesGasto(traerOperacionesDesdeLS("operaciones")),
-    operacionesGanancia(traerOperacionesDesdeLS("operaciones"))
+    operacionesPorTipo(traerOperacionesDesdeLS("operaciones"), "gasto"),
+    operacionesPorTipo(traerOperacionesDesdeLS("operaciones"), "ganancia")
   );
 }
