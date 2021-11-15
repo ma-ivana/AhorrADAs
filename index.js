@@ -349,11 +349,11 @@ const mostrarOperacionesEnHTML = (array) => {
     <p id="fecha-item-operacion" class="column is-2 is-hidden-mobile">${
       operacion.fecha
     }</p>
-    <p id="monto-item-operacion" class="column is-2 is-3-mobile has-text-right has-text-weight-bold ${colorDeMonto(
+    <p id="monto-item-operacion" class="column is-2-desktop is-3-mobile has-text-right has-text-weight-bold ${colorDeMonto(
       operacion
     )}">${signoMonto(operacion)}$${operacion.monto}
     </p>
-    <div class="column is-2 is-3-mobile pt-0">
+    <div class="column is-2-desktop is-3-mobile pt-0 has-text-right">
       <button id="boton-editar-item-operaciones" class="button is-ghost is-small pt-0 pb-0">Editar</button>
       <button id="boton-eliminar-item-operaciones" class="button is-ghost is-small pt-0">Eliminar</button>
     </div>
