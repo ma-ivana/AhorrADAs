@@ -325,14 +325,13 @@ const colorDeMonto = (objeto) => {
   }
 };
 
-const signoMonto = (operacion)=>{
-  if(operacion.tipo === "gasto"){
-    return "-"
+const signoMonto = (operacion) => {
+  if (operacion.tipo === "gasto") {
+    return "-";
+  } else if (operacion.tipo === "ganancia") {
+    return "+";
   }
-  else if(operacion.tipo === "ganancia"){
-    return "+"
-  }
-}
+};
 
 const mostrarOperacionesEnHTML = (array) => {
   const itemsOperaciones = array.reduce((acc, operacion, index, array) => {
@@ -422,8 +421,6 @@ selectDeCategoria.onchange = () => {
   mostrarOperacionesEnHTML(arrayFiltradoFinal);
 };
 
-// Por fecha
-
 // Seccion balance //
 
 //Función auxiliar, operaciones por tipo.
@@ -460,6 +457,38 @@ const mostrarBalance = (gastos, ganancias) => {
     const totalCortado = totalString.slice(1);
     totalGananciasMenosGastos.textContent = `$${Number(totalCortado)}`;
   }
+};
+
+// Función ordenar fechas
+const inputFecha = document.querySelector("#input-fecha");
+
+const ordenarFechas = (array) => {
+  const fechasOrdenadas = array.sort((a, b) => {
+    return new Date(b.fecha) - new Date(a.fecha);
+  });
+
+  const fechaFinal = fechasOrdenadas.map((operacion) => {
+    new Date(operacion.fecha).toLocaleDateString();
+    return operacion;
+  });
+  return fechaFinal;
+};
+
+//Funcion filtro fechas
+const fechasNuevas = (operaciones) => {
+  const fechasSeccionadas = [];
+  for (let i = 0; i < operaciones.length; i++) {
+    if (new Date(inputFechaFiltro.value) <= new Date(operaciones[i].fecha)) {
+      fechasSeccionadas.push(operaciones[i]);
+    }
+  }
+  return fechasSeccionadas;
+};
+
+//Ejecición filtrado por fecha
+inputFechaFiltro.onchange = () => {
+  const filtradoDeFechas = fechasNuevas(traerOperacionesDesdeLS("operaciones"));
+  mostrarOperacionesEnHTML(ordenarFechas(filtradoDeFechas));
 };
 
 if (traerOperacionesDesdeLS("operaciones") === null) {
